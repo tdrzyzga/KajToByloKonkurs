@@ -1,0 +1,15 @@
+﻿<Window x:Class="KajToBylo.DialogNewBase"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Nowa baza" Height="131" Width="301" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" WindowStartupLocation="CenterScreen">
+    <StackPanel Height="93" Name="stackPanel1" Width="280">
+        <StackPanel Height="55" Name="stackPanel2" Width="280" Orientation="Horizontal">
+            <TextBlock Height="23" Name="textBlock1" Text="Podaj nazwę bazy" Width="108" TextAlignment="Center" Padding="2" />
+            <TextBox Height="23" x:Name="dialogNameBase" Width="158" Text="" />
+        </StackPanel>
+        <StackPanel Height="38" Name="stackPanel3" Width="174" Orientation="Horizontal" FlowDirection="LeftToRight" HorizontalAlignment="Right">
+            <Button Content="Ok" Height="23" Name="dialogNewBaseOk" Width="75" Margin="3" VerticalContentAlignment="Top" Click="dialogNewBaseOk_Click" />
+            <Button Content="Anuluj" Height="23" Name="dialogNewBaseCancel" Width="75" Margin="3" VerticalContentAlignment="Top" Click="dialogNewBaseCancel_Click" />
+        </StackPanel>
+    </StackPanel>
+</Window>

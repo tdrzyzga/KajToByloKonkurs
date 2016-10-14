@@ -34,7 +34,6 @@ namespace KajToBylo
             tabControl.DataContext = collections;
         }
 
-
         private void newBase_Click(object sender, RoutedEventArgs e)
         {
             DialogNewBase newBase = new DialogNewBase();
@@ -59,8 +58,30 @@ namespace KajToBylo
             {
                 myBase.SetCategory(newQuestion.Category, newQuestion.Question);
                 collections.AddItemsToCollections(newQuestion.Category, newQuestion.Question);
+
+                RefreshListsView(newQuestion.Category);
+
             }
             newQuestion.Close();
+        }
+
+        private void RefreshListsView(IndexCategory indexCategory)
+        {
+            switch (indexCategory)
+            {
+                case IndexCategory.MusicPL:
+                    listViewMusicPL.Items.Refresh();
+                    break;
+                case IndexCategory.MusicSL:
+                    listViewMusicSL.Items.Refresh();
+                    break;
+                case IndexCategory.Movie:
+                    listViewMovie.Items.Refresh();
+                    break;
+                case IndexCategory.Book:
+                    listViewBook.Items.Refresh();
+                    break;
+            }
         }
         private void openBase_Click(object sender, RoutedEventArgs e)
         {
@@ -112,11 +133,19 @@ namespace KajToBylo
 
         private void getSelectedItem(object sender, MouseButtonEventArgs e)
         {
-            QuestionAnswers question = (QuestionAnswers)listViewMusicPL.SelectedItems[0];
-            question.Used = true;
-            myBase.Used(IndexCategory.MusicPL, question);
+            System.Windows.Controls.ListView listView = sender as System.Windows.Controls.ListView;
 
-            System.Windows.MessageBox.Show(question.ToString());
+            QuestionAnswers question = (QuestionAnswers)listView.SelectedItems[0];
+            if (question.Used == true)
+                question.Used = false;
+            else
+                question.Used = true;
+            listView.Items.Refresh();
+            //myBase.Used(IndexCategory.MusicPL, question);
+
+            //System.Windows.MessageBox.Show(question.ToString());
         }
+
     }
 }
+

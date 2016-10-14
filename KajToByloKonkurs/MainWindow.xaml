@@ -1,12 +1,144 @@
-﻿<Window x:Class="KajToByloKonkurs.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:KajToByloKonkurs"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="KajToBylo.MainWindow"
+    xmlns:local="clr-namespace:KajToBylo"
+        Title="Kaj to było" MinHeight="350" MinWidth="525" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" BorderThickness="1" Width="525" Height="350" WindowStartupLocation="CenterScreen" Foreground="{x:Null}">
+    <Window.Resources>
+        <AlternationConverter x:Key="AlternationConverter"/>
+    </Window.Resources>
+    <DockPanel x:Name="dockPanel1">
+        <StackPanel DockPanel.Dock ="Top" x:Name="stackPanel1">
+            <Menu x:Name="menu1" MinWidth="505" MinHeight="27" Margin="0" Padding="2" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+                <MenuItem Header="Baza">
+                    <MenuItem Header="Nowa baza" ToolTip="Utwórz nową bazę" Click="newBase_Click"/>
+                    <MenuItem Header="Otwórz bazę" ToolTip="Otwórz istniająca bazę" />
+                    <MenuItem Header="Zapisz bazę" x:Name="menuSaveBase" ToolTip="Zapisz bazę" IsEnabled="False"/>
+                    <MenuItem Header="Zamknij" x:Name="menuCloseApp" ToolTip="Zamknij" Click="closeApp_Click"/>
+                </MenuItem>
+                <MenuItem Header="Edycja">
+                    <MenuItem Header="Dodaj pytanie" x:Name="menuAddQuestion" ToolTip="Dodaj pytanie do kategorii" Click="newQuestion_Click" IsEnabled="False"/>
+                    <MenuItem Header="Usuń pytanie" x:Name="menuDeleteQuestion" ToolTip="Usuń pytanie z kategorii" IsEnabled="False"/>
+                </MenuItem>
+            </Menu>
+
+            <ToolBar Height="34" x:Name="toolBar1" MinWidth="505" Background="{x:Null}" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+                <Button x:Name="buttonNewBase" ToolTip="Utwórz nową bazę" Click="newBase_Click">
+                    <Image x:Name="image1" Source="/KajToByloKonkurs;component/Images/new.png" Stretch="Fill" StretchDirection="Both"  />
+                </Button>
+                <Button x:Name="buttonOpenBase" ToolTip="Otwórz istniającą bazę" Click="openBase_Click">
+                    <Image x:Name="image2" Stretch="Fill" Source="/KajToByloKonkurs;component/Images/open.png" StretchDirection="Both" />
+                </Button>
+                <Button x:Name="buttonSaveBase" ToolTip="Zapisz bazę" Padding="1" IsEnabled="False" Click="saveBase_Click">
+                    <Image x:Name="image3" Stretch="Fill" Source="/KajToByloKonkurs;component/Images/save.png" StretchDirection="Both" />
+                </Button>
+                <Separator Height="27" Margin="0"/>
+                <Button x:Name="buttonNewQuestion" ToolTip="Dodaj nowe pytanie" Padding="1" VerticalAlignment="Stretch" Click="newQuestion_Click" IsEnabled="False">
+                    <Image x:Name="image4" Stretch="Fill" Source="/KajToByloKonkurs;component/Images/legend.png" StretchDirection="Both" />
+                </Button>
+
+            </ToolBar>
+        </StackPanel>
+
+        <TabControl MinHeight="250" x:Name="tabControl" Width="Auto" Height="Auto" MinWidth="501" Foreground="{x:Null}">
+            <TabItem Header="Muzyka Polska">
+                <Grid ShowGridLines="True">
+                    <ListView ItemsSource="{Binding CollectionMusicPL}" x:Name="listViewMusicPL" MouseDoubleClick="getSelectedItem">
+                        <ListView.Resources>
+                            <local:OrdinalConverter x:Key="OrdinalConverter" />
+                            <DataTemplate x:Key="OrdinalColumnDataTemplate">
+                                <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem},
+            Converter={StaticResource ResourceKey=OrdinalConverter}}" HorizontalAlignment="Right" />
+                            </DataTemplate>
+                        </ListView.Resources>
+                        <ListView.View>
+                            <GridView>
+                                <GridView.ColumnHeaderContainerStyle>
+                                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </Style>
+                                </GridView.ColumnHeaderContainerStyle>
+                                <GridViewColumn CellTemplate="{StaticResource ResourceKey=OrdinalColumnDataTemplate}" Width="20"/>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Muzyka Śląska">
+                <Grid ShowGridLines="True">
+                    <ListView  ItemsSource="{Binding CollectionMusicSL}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.ColumnHeaderContainerStyle>
+                                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </Style>
+                                </GridView.ColumnHeaderContainerStyle>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Margin="0" VerticalAlignment="Center" IsChecked="{Binding IsChecked}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Film">
+                <Grid ShowGridLines="True">
+                    <ListView  ItemsSource="{Binding CollectionMovie}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.ColumnHeaderContainerStyle>
+                                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </Style>
+                                </GridView.ColumnHeaderContainerStyle>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Margin="0" VerticalAlignment="Center" IsChecked="{Binding IsChecked}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Książka">
+                <Grid ShowGridLines="True">
+                    <ListView  ItemsSource="{Binding CollectionBook}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.ColumnHeaderContainerStyle>
+                                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </Style>
+                                </GridView.ColumnHeaderContainerStyle>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Margin="0" VerticalAlignment="Center" IsChecked="{Binding Path=Used}" Content="{Binding Path=Used}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+    </DockPanel>
 </Window>
