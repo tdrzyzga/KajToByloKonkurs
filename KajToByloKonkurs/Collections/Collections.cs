@@ -63,6 +63,26 @@ namespace KajToBylo
             }
         }
 
+        public void DeleteItem(MainWindow.IndexCategory index, QuestionAnswers question)
+        {
+            switch (index)
+            {
+                case MainWindow.IndexCategory.MusicPL:
+                    CollectionMusicPL.Remove(question);
+                    break;
+                case MainWindow.IndexCategory.MusicSL:
+                    CollectionMusicSL.Remove(question);
+                    break;
+                case MainWindow.IndexCategory.Movie:
+                    CollectionMovie.Remove(question);
+                    break;
+                case MainWindow.IndexCategory.Book:
+                    CollectionBook.Remove(question);
+                    break;
+            }
+        }
+
+
         public void Clear()
         {
             CollectionMusicPL.Clear();

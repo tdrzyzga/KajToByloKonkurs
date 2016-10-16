@@ -9,7 +9,7 @@
     </Window.Resources>
     <DockPanel x:Name="dockPanel1">
         <StackPanel DockPanel.Dock ="Top" x:Name="stackPanel1">
-            <Menu x:Name="menu1" MinWidth="505" MinHeight="27" Margin="0" Padding="2" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+            <Menu x:Name="menu1" MinWidth="505" MinHeight="27" Margin="0" Padding="2" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Background="{x:Null}">
                 <MenuItem Header="Baza">
                     <MenuItem Header="Nowa baza" ToolTip="Utwórz nową bazę" Click="newBase_Click"/>
                     <MenuItem Header="Otwórz bazę" ToolTip="Otwórz istniająca bazę" />
@@ -45,18 +45,19 @@
                 <TabItem Header="Muzyka Polska">
                     <Grid ShowGridLines="True">
 
-                        <ListView ItemsSource="{Binding CollectionMusicPL}" x:Name="listViewMusicPL" MouseDoubleClick="getSelectedItem" FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                        <ListView ItemsSource="{Binding CollectionMusicPL}" x:Name="listViewMusicPL" MouseDoubleClick="getSelectedItem" FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectedIndex="1">
                             <ListView.Resources>
                                 <local:OrdinalConverter x:Key="OrdinalConverter" />
                             </ListView.Resources>
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListViewItem}">
-
+                                    <Style.Resources>
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}" />
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                                    </Style.Resources>
                                     <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" />
                                     <Setter Property="BorderThickness" Value="0,0,0,1" />
-
-
-
+                                    
 
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Used}" Value="True">
@@ -76,7 +77,7 @@
                                         <StackPanel   Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Converter={StaticResource ResourceKey=OrdinalConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </StackPanel>
-                                        
+
                                         <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="{Binding Question}"/>
@@ -95,7 +96,7 @@
 
                                         <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
                                             <Button Content="Edytuj" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right"/>
-                                            <Button Content="Usuń" ToolTip="Usuń pytanie" Margin="2" Width="50" HorizontalAlignment="Right" />
+                                            <Button Content="Usuń" x:Name="buttonDeleteMusicPL" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
                                         </StackPanel>
 
                                     </Grid>

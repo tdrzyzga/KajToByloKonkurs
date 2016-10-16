@@ -37,6 +37,11 @@ namespace KajToBylo
             listQuestionAnswers.Sort(questionComparer);
         }
 
+        public void DeleteQuestion(QuestionAnswers question)
+        {
+            listQuestionAnswers.Remove(question);
+        }
+
         /*  public void Used(QuestionAnswers question)
           {
               var searchQuestion = listQuestionAnswers.Find(x => x.Question == question.Question);

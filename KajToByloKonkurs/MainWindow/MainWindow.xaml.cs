@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
+using System.Collections.ObjectModel;
 
 namespace KajToBylo
 {
@@ -178,6 +179,29 @@ namespace KajToBylo
             
             Environment.Exit(0);
         }
+
+        private void buttonDeleteQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Button buttonDeleteQuestion = sender as System.Windows.Controls.Button;
+            QuestionAnswers question = buttonDeleteQuestion.DataContext as QuestionAnswers;
+
+            collections.DeleteItem(CheckCategory(buttonDeleteQuestion.Name), question);
+            myBase.DeleteQuestion(CheckCategory(buttonDeleteQuestion.Name), question);
+            RefreshListsView(CheckCategory(buttonDeleteQuestion.Name));
+        }
+
+        private IndexCategory CheckCategory(string button)
+        {
+            if (button == "buttonDeleteMusicPL")
+                    return IndexCategory.MusicPL;
+            else if(button == "buttonDeleteMusicSL")
+                    return IndexCategory.MusicSL;
+            else if (button == "buttonDeleteMovie")
+                return IndexCategory.Movie;
+            else
+                return IndexCategory.Book;
+        }
+        
     }
 }
 

@@ -32,7 +32,7 @@ namespace KajToBylo
             Used = used;
         }
 
-        /*public override string ToString()
+        public override string ToString()
         {
             string[] Answers = { "a) " + ResponseA, "b) " + ResponseB, "c) " + ResponseC, "d) " + ResponseD };
 
@@ -42,6 +42,6 @@ namespace KajToBylo
                 return "Było " + Question + "\n" + Answers[0] + "\t"+ Answers[1] + "\t" + Answers[2] + "\t" + Answers[3] + "  " + GoodAnswer;
             else
                 return Question + "\n" + Answers[0] + "\t" + Answers[1] + "\t" + Answers[2] + "\t" + Answers[3] + "  " + GoodAnswer;
-        }*/
+        }
     }
 }

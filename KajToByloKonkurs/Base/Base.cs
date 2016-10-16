@@ -36,6 +36,11 @@ namespace KajToBylo
             dictinaryCategory[key].AddQuestion(question);
         }
 
+        public void DeleteQuestion(KajToBylo.MainWindow.IndexCategory key, QuestionAnswers question)
+        {
+            dictinaryCategory[key].DeleteQuestion(question);
+        }
+
         /* public void Used(KajToBylo.MainWindow.IndexCategory key, QuestionAnswers question)
          {
              dictinaryCategory[key].Used(question);
