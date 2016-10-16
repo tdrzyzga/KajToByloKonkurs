@@ -62,5 +62,13 @@ namespace KajToBylo
                     break;
             }
         }
+
+        public void Clear()
+        {
+            CollectionMusicPL.Clear();
+            CollectionMusicSL.Clear();
+            CollectionMovie.Clear();
+            CollectionBook.Clear();
+        }
     }
 }

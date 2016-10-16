@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="KajToBylo.MainWindow"
     xmlns:local="clr-namespace:KajToBylo"
-        Title="Kaj to było" MinHeight="350" MinWidth="525" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" BorderThickness="1" Width="525" Height="350" WindowStartupLocation="CenterScreen" Foreground="{x:Null}">
+        Title="Kaj to było" MinHeight="350" MinWidth="650" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" BorderThickness="1" Width="660" Height="350" WindowStartupLocation="CenterScreen" Foreground="{x:Null}" Closing="Window_Closing">
     <Window.Resources>
         <AlternationConverter x:Key="AlternationConverter"/>
     </Window.Resources>
@@ -44,34 +44,95 @@
             <TabControl.Items>
                 <TabItem Header="Muzyka Polska">
                     <Grid ShowGridLines="True">
-                        <ListView ItemsSource="{Binding CollectionMusicPL}" x:Name="listViewMusicPL" MouseDoubleClick="getSelectedItem" FontSize="12">
+
+                        <ListView ItemsSource="{Binding CollectionMusicPL}" x:Name="listViewMusicPL" MouseDoubleClick="getSelectedItem" FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                             <ListView.Resources>
+                                <local:OrdinalConverter x:Key="OrdinalConverter" />
+                            </ListView.Resources>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListViewItem}">
+
+                                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+
+
+
+
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Used}" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="400*"/>
+                                            <ColumnDefinition Width="120*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel   Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Converter={StaticResource ResourceKey=OrdinalConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                        
+                                        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Question}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="a)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseA}" FontSize="12" Padding="2" Width="100"  />
+                                                <Label Content="b)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseB}" FontSize="12" Padding="2" Width="100" />
+                                                <Label Content="c)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseC}" FontSize="12" Padding="2" Width="100" />
+                                                <Label Content="d)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseD}" FontSize="12" Padding="2" Width="100" />
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
+                                            <Button Content="Edytuj" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right"/>
+                                            <Button Content="Usuń" ToolTip="Usuń pytanie" Margin="2" Width="50" HorizontalAlignment="Right" />
+                                        </StackPanel>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <!--ListView.Resources>
                                 <local:OrdinalConverter x:Key="OrdinalConverter" />
                                 <DataTemplate x:Key="OrdinalColumnDataTemplate">
                                     <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Converter={StaticResource ResourceKey=OrdinalConverter}}" HorizontalAlignment="Right" />
                                 </DataTemplate>
                                 <DataTemplate x:Key="QuestionColumnDataTemplate">
-                                    <StackPanel Orientation="Vertical">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Question}"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal" x:Name="BGBorder">
-                                            <Label Content="a)" Padding="2" Width="20" />
-                                            <TextBlock Text="{Binding ResponseA}" FontSize="12" Padding="2" Width="100" />
-                                            <Label Content="b)" Padding="2" Width="20" />
-                                            <TextBlock Text="{Binding ResponseB}" FontSize="12" Padding="2" Width="100" />
-                                            <Label Content="c)" Padding="2" Width="20" />
-                                            <TextBlock Text="{Binding ResponseC}" FontSize="12" Padding="2" Width="100" />
-                                            <Label Content="d)" Padding="2" Width="20" />
-                                            <TextBlock Text="{Binding ResponseD}" FontSize="12" Padding="2" Width="100" />
-
-                                        </StackPanel>
+                                    <StackPanel Orientation="Vertical" Grid.Column="1" >
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Question}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="a)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseA}" FontSize="12" Padding="2" Width="100"  />
+                                                <Label Content="b)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseB}" FontSize="12" Padding="2" Width="100" />
+                                                <Label Content="c)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseC}" FontSize="12" Padding="2" Width="100" />
+                                                <Label Content="d)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseD}" FontSize="12" Padding="2" Width="100" />
+                                            </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
-                            </ListView.Resources>
+                                <DataTemplate x:Key="ButtonColumnDataTemplate">
+                                    <StackPanel HorizontalAlignment="Right" >
+                                        <Button Content="Edytuj" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right"/>
+                                        <Button Content="Usuń" ToolTip="Usuń pytanie" Margin="2" Width="50" HorizontalAlignment="Right" />
+                                    </StackPanel>                                       
+                                </DataTemplate>
+                            </>
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListViewItem}">
-                                    <Setter Property="BorderBrush" Value="{StaticResource {x:Static SystemColors.ActiveBorderBrushKey}}" />
+                                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" />
                                     <Setter Property="BorderThickness" Value="0,0,0,1" />
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Used}" Value="True">
@@ -80,17 +141,21 @@
                                     </Style.Triggers>
                                 </Style>
                             </ListView.ItemContainerStyle>
+                            
                             <ListView.View>
                                 <GridView>
                                     <GridView.ColumnHeaderContainerStyle>
                                         <Style TargetType="{x:Type GridViewColumnHeader}">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                                                    
                                         </Style>
                                     </GridView.ColumnHeaderContainerStyle>
                                     <GridViewColumn CellTemplate="{StaticResource ResourceKey=OrdinalColumnDataTemplate}" Width="20"/>
+
                                     <GridViewColumn CellTemplate="{StaticResource ResourceKey=QuestionColumnDataTemplate}"/>
+
+                                    <GridViewColumn CellTemplate="{StaticResource ResourceKey=ButtonColumnDataTemplate}"/>
                                 </GridView>
-                            </ListView.View>
+                            </ListView.View-->
                         </ListView>
                     </Grid>
                 </TabItem>

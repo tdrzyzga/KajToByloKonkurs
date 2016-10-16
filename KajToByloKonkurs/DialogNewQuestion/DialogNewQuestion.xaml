@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Nowe pytanie" Height="150" Width="620" Foreground="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" MinHeight="150" MinWidth="620" MaxWidth="620" MaxHeight="150" Padding="0,3" WindowStartupLocation="CenterScreen">
+        Title="Nowe pytanie" Height="150" Width="620" Foreground="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" MinHeight="150" MinWidth="620" Padding="0,3" WindowStartupLocation="CenterScreen" MaxWidth="620" MaxHeight="150">
     <Grid>
         <StackPanel Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
             <StackPanel Height="76">

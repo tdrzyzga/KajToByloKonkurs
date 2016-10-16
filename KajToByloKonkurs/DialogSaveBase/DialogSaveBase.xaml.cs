@@ -18,9 +18,22 @@ namespace KajToBylo
     /// </summary>
     public partial class DialogSaveBase : Window
     {
+        public bool DialogSaveBaseResult { get; private set; }
+
         public DialogSaveBase()
         {
             InitializeComponent();
+        }
+
+        private void dialogSaveBaseOk_Click(object sender, RoutedEventArgs e)
+        {
+            DialogSaveBaseResult = true;
+            this.Hide();
+        }
+
+        private void dialogSaveBaseCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
         }
     }
 }

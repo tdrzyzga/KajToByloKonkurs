@@ -36,6 +36,9 @@ namespace KajToBylo
 
         private void newBase_Click(object sender, RoutedEventArgs e)
         {
+            if (myBase != null)
+                saveBaseAndClear();
+            
             DialogNewBase newBase = new DialogNewBase();
             newBase.ShowDialog();
 
@@ -85,6 +88,9 @@ namespace KajToBylo
         }
         private void openBase_Click(object sender, RoutedEventArgs e)
         {
+            if (myBase != null)
+                saveBaseAndClear();
+
             FolderBrowserDialog openBase = new FolderBrowserDialog();
             openBase.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\KajToBylo\";
 
@@ -102,6 +108,22 @@ namespace KajToBylo
             }
         }
 
+        private void saveBaseAndClear()
+        {
+            DialogSaveBase saveBase = new DialogSaveBase();
+            saveBase.ShowDialog();
+
+            if (saveBase.DialogSaveBaseResult)
+            {
+                myBase.WriteAll();
+                
+            }
+            else
+                collections.Clear();
+
+            saveBase.Close();
+        }
+
         private void saveBase_Click(object sender, RoutedEventArgs e)
         {
             myBase.WriteAll();
@@ -109,7 +131,10 @@ namespace KajToBylo
 
         private void closeApp_Click(object sender, RoutedEventArgs e)
         {
-            Environment.Exit(1);
+            if (myBase != null)
+                saveBaseAndClear();
+            
+            Environment.Exit(0);
         }
 
         private void SetCollections()
@@ -146,6 +171,13 @@ namespace KajToBylo
             //System.Windows.MessageBox.Show(question.ToString());
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (myBase != null)
+                saveBaseAndClear();
+            
+            Environment.Exit(0);
+        }
     }
 }
 
