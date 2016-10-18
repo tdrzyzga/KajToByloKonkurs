@@ -63,13 +63,13 @@ namespace KajToBylo
                 myBase.SetCategory(newQuestion.Category, newQuestion.Question);
                 collections.AddItemsToCollections(newQuestion.Category, newQuestion.Question);
 
-                RefreshListsView(newQuestion.Category);
+                refreshListsView(newQuestion.Category);
 
             }
             newQuestion.Close();
         }
 
-        private void RefreshListsView(IndexCategory indexCategory)
+        private void refreshListsView(IndexCategory indexCategory)
         {
             switch (indexCategory)
             {
@@ -103,7 +103,7 @@ namespace KajToBylo
                 myBase = new Base(openBase.SelectedPath.Substring(index + 1));
                 myBase.ReadALL(openBase.SelectedPath);
 
-                SetCollections();
+                setCollections();
 
                 enabledControls();
             }
@@ -138,7 +138,7 @@ namespace KajToBylo
             Environment.Exit(0);
         }
 
-        private void SetCollections()
+        private void setCollections()
         {
             for (int i = 0; i < NameCategory.Count(); i++)
             {
@@ -172,7 +172,7 @@ namespace KajToBylo
             //System.Windows.MessageBox.Show(question.ToString());
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (myBase != null)
                 saveBaseAndClear();
@@ -185,12 +185,12 @@ namespace KajToBylo
             System.Windows.Controls.Button buttonDeleteQuestion = sender as System.Windows.Controls.Button;
             QuestionAnswers question = buttonDeleteQuestion.DataContext as QuestionAnswers;
 
-            collections.DeleteItem(CheckCategory(buttonDeleteQuestion.Name), question);
-            myBase.DeleteQuestion(CheckCategory(buttonDeleteQuestion.Name), question);
-            RefreshListsView(CheckCategory(buttonDeleteQuestion.Name));
+            collections.DeleteItem(checkCategory(buttonDeleteQuestion.Name), question);
+            myBase.DeleteQuestion(checkCategory(buttonDeleteQuestion.Name), question);
+            refreshListsView(checkCategory(buttonDeleteQuestion.Name));
         }
 
-        private IndexCategory CheckCategory(string button)
+        private IndexCategory checkCategory(string button)
         {
             if (button == "buttonDeleteMusicPL")
                     return IndexCategory.MusicPL;

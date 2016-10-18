@@ -63,6 +63,7 @@ namespace KajToBylo
                 }
             }
         }
+
         public void ReadALL(string folder)
         {
             for (int i = 0; i < dictinaryCategory.Count; i++)

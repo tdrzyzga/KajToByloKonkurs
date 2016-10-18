@@ -31,13 +31,13 @@ namespace KajToBylo
         {
             DialogNewQuestionResult = true;
 
-            Question = new QuestionAnswers(newQuestion.Text, CheckCorrectAnswer(), dialogNewQuestionAnswerA.Text, dialogNewQuestionAnswerB.Text, dialogNewQuestionAnswerC.Text, dialogNewQuestionAnswerD.Text, DateTime.Now);
-            Category = CheckCategory();
+            Question = new QuestionAnswers(newQuestion.Text, checkCorrectAnswer(), dialogNewQuestionAnswerA.Text, dialogNewQuestionAnswerB.Text, dialogNewQuestionAnswerC.Text, dialogNewQuestionAnswerD.Text, DateTime.Now);
+            Category = checkCategory();
 
             this.Hide();
         }
 
-        private MainWindow.IndexCategory CheckCategory()
+        private MainWindow.IndexCategory checkCategory()
         {
             if (dialogNewQuestionMusicPL.IsChecked == true)
                 return MainWindow.IndexCategory.MusicPL;
@@ -49,7 +49,7 @@ namespace KajToBylo
                 return MainWindow.IndexCategory.Book;
         }
 
-        private MainWindow.CorrectAnswer CheckCorrectAnswer()
+        private MainWindow.CorrectAnswer checkCorrectAnswer()
         {
             if (dialogNewQuestionA.IsChecked == true)
                 return MainWindow.CorrectAnswer.AnswerA;
