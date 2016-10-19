@@ -82,6 +82,24 @@ namespace KajToBylo
             }
         }
 
+        public void ChangeItem(MainWindow.IndexCategory index, QuestionAnswers question)
+        {
+            switch (index)
+            {
+                case MainWindow.IndexCategory.MusicPL:
+                    CollectionMusicPL[CollectionMusicPL.IndexOf(question)] = question;
+                    break;
+                case MainWindow.IndexCategory.MusicSL:
+                    CollectionMusicSL[CollectionMusicSL.IndexOf(question)] = question;
+                    break;
+                case MainWindow.IndexCategory.Movie:
+                    CollectionMovie[CollectionMovie.IndexOf(question)] = question;
+                    break;
+                case MainWindow.IndexCategory.Book:
+                    CollectionBook[CollectionBook.IndexOf(question)] = question;
+                    break;
+            }
+        }
 
         public void Clear()
         {
