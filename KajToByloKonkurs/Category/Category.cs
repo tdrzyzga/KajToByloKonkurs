@@ -41,15 +41,5 @@ namespace KajToBylo
         {
             listQuestionAnswers.Remove(question);
         }
-
-        /*  public void Used(QuestionAnswers question)
-          {
-              var searchQuestion = listQuestionAnswers.Find(x => x.Question == question.Question);
-
-              if (searchQuestion.Used == true)
-                  listQuestionAnswers.Find(x => x.Question == question.Question).Used = false;
-              else
-                  listQuestionAnswers.Find(x => x.Question == question.Question).Used = true;
-          }*/
     }
 }
