@@ -28,15 +28,16 @@ namespace KajToBylo
         {
             InitializeComponent();
 
-            Question = question;
             Category = category;
-            CorrectAnswer = Question.GoodAnswer;
+            CorrectAnswer = question.GoodAnswer;
 
             editQuestion.Text = question.Question;
-            dialogEditQuestionAnswerA.Text = Question.ResponseA;
-            dialogEditQuestionAnswerB.Text = Question.ResponseB;
-            dialogEditQuestionAnswerC.Text = Question.ResponseC;
-            dialogEditQuestionAnswerD.Text = Question.ResponseD;
+            dialogEditQuestionAnswerA.Text = question.ResponseA;
+            dialogEditQuestionAnswerB.Text = question.ResponseB;
+            dialogEditQuestionAnswerC.Text = question.ResponseC;
+            dialogEditQuestionAnswerD.Text = question.ResponseD;
+
+
 
             SetCategory();
             SetCorrectAnswer();
@@ -46,9 +47,8 @@ namespace KajToBylo
         {
             DialogEditQuestionResult = true;
 
-            QuestionAnswers questionAfterChanges = new QuestionAnswers(editQuestion.Text, CheckCorrectAnswer(), dialogEditQuestionAnswerA.Text, dialogEditQuestionAnswerB.Text, dialogEditQuestionAnswerC.Text, dialogEditQuestionAnswerD.Text, DateTime.Now);
-            Question = questionAfterChanges;
-
+            Question = new QuestionAnswers(editQuestion.Text, CheckCorrectAnswer(), dialogEditQuestionAnswerA.Text, dialogEditQuestionAnswerB.Text, dialogEditQuestionAnswerC.Text, dialogEditQuestionAnswerD.Text, DateTime.Now);
+         
             this.Hide();
         }
 
