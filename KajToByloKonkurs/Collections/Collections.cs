@@ -32,10 +32,10 @@ namespace KajToBylo
                     CollectionMusicSL.Insert(0, question);
                     break;
                 case MainWindow.IndexCategory.Movie:
-                    CollectionMovie.Add(question);
+                    CollectionMovie.Insert(0, question);
                     break;
                 case MainWindow.IndexCategory.Book:
-                    CollectionBook.Add(question);
+                    CollectionBook.Insert(0, question);
                     break;
             }
         }
