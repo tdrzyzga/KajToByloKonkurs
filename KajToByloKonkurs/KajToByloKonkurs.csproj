@@ -74,6 +74,9 @@
     <Compile Include="Base\Base.cs" />
     <Compile Include="Category\Category.cs" />
     <Compile Include="Collections\Collections.cs" />
+    <Compile Include="DialogEditQuestion\DialogEditQuestion.xaml.cs">
+      <DependentUpon>DialogEditQuestion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DialogNewQuestion\DialogNewQuestion.xaml.cs">
       <DependentUpon>DialogNewQuestion.xaml</DependentUpon>
     </Compile>
@@ -83,6 +86,10 @@
     <Compile Include="OrdinalConverter\OrdinalConverter.cs" />
     <Compile Include="QuestionAnswers\QuestionAnswers.cs" />
     <Compile Include="QuestionComparer\QuestionComparer.cs" />
+    <Page Include="DialogEditQuestion\DialogEditQuestion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DialogNewBase\DialogNewBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
