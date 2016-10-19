@@ -99,7 +99,8 @@ namespace KajToBylo
             if (saveBase.DialogSaveBaseResult)
             {
                 myBase.WriteAll();
-                
+                collections.Clear();
+
             }
             else
                 collections.Clear();
