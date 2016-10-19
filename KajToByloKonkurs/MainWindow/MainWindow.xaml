@@ -91,7 +91,7 @@
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
-                                            <Button Content="Edytuj" x:Name="buttonEditMusicPL" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right"/>
+                                            <Button Content="Edytuj" x:Name="buttonEditMusicPL" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click"/>
                                             <Button Content="Usuń" x:Name="buttonDeleteMusicPL" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
                                         </StackPanel>
 

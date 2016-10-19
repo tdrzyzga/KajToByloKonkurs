@@ -69,24 +69,6 @@ namespace KajToBylo
             newQuestion.Close();
         }
 
-        private void refreshListsView(IndexCategory indexCategory)
-        {
-            switch (indexCategory)
-            {
-                case IndexCategory.MusicPL:
-                    listViewMusicPL.Items.Refresh();
-                    break;
-                case IndexCategory.MusicSL:
-                    listViewMusicSL.Items.Refresh();
-                    break;
-                case IndexCategory.Movie:
-                    listViewMovie.Items.Refresh();
-                    break;
-                case IndexCategory.Book:
-                    listViewBook.Items.Refresh();
-                    break;
-            }
-        }
         private void openBase_Click(object sender, RoutedEventArgs e)
         {
             if (myBase != null)
@@ -130,14 +112,6 @@ namespace KajToBylo
             myBase.WriteAll();
         }
 
-        private void closeApp_Click(object sender, RoutedEventArgs e)
-        {
-            if (myBase != null)
-                saveBaseAndClear();
-            
-            Environment.Exit(0);
-        }
-
         private void setCollections()
         {
             for (int i = 0; i < NameCategory.Count(); i++)
@@ -172,14 +146,6 @@ namespace KajToBylo
             //System.Windows.MessageBox.Show(question.ToString());
         }
 
-        private void window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (myBase != null)
-                saveBaseAndClear();
-            
-            Environment.Exit(0);
-        }
-
         private void buttonDeleteQuestion_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Controls.Button buttonDeleteQuestion = sender as System.Windows.Controls.Button;
@@ -200,7 +166,7 @@ namespace KajToBylo
 
             if (editQuestion.DialogEditQuestionResult)
             {
-                collections.ChangeItem(checkCategory(buttonEditQuestion.Name), question);
+                collections.ChangeItem(checkCategory(buttonEditQuestion.Name),question, editQuestion.Question);
                 refreshListsView(checkCategory(buttonEditQuestion.Name));
             }
 
@@ -219,6 +185,40 @@ namespace KajToBylo
                 return IndexCategory.Book;
         }
 
+        private void refreshListsView(IndexCategory indexCategory)
+        {
+            switch (indexCategory)
+            {
+                case IndexCategory.MusicPL:
+                    listViewMusicPL.Items.Refresh();
+                    break;
+                case IndexCategory.MusicSL:
+                    listViewMusicSL.Items.Refresh();
+                    break;
+                case IndexCategory.Movie:
+                    listViewMovie.Items.Refresh();
+                    break;
+                case IndexCategory.Book:
+                    listViewBook.Items.Refresh();
+                    break;
+            }
+        }
+
+        private void closeApp_Click(object sender, RoutedEventArgs e)
+        {
+            if (myBase != null)
+                saveBaseAndClear();
+
+            Environment.Exit(0);
+        }
+
+        private void window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (myBase != null)
+                saveBaseAndClear();
+
+            Environment.Exit(0);
+        }
     }
 }
 
