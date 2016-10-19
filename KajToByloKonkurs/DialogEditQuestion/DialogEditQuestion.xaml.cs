@@ -36,9 +36,7 @@ namespace KajToBylo
             dialogEditQuestionAnswerB.Text = question.ResponseB;
             dialogEditQuestionAnswerC.Text = question.ResponseC;
             dialogEditQuestionAnswerD.Text = question.ResponseD;
-
-
-
+            
             SetCategory();
             SetCorrectAnswer();
         }
