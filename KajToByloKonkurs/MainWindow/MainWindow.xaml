@@ -4,9 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="KajToBylo.MainWindow"
     xmlns:local="clr-namespace:KajToBylo"
         Title="Kaj to było" MinHeight="350" MinWidth="650" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" BorderThickness="1" Width="660" Height="350" WindowStartupLocation="CenterScreen" Foreground="{x:Null}" Closing="window_Closing">
-    <Window.Resources>
-        <AlternationConverter x:Key="AlternationConverter"/>
-    </Window.Resources>
+
     <DockPanel x:Name="dockPanel1">
         <StackPanel DockPanel.Dock ="Top" x:Name="stackPanel1">
             <Menu x:Name="menu1" MinWidth="505" MinHeight="27" Margin="0" Padding="2" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Background="{x:Null}">
@@ -93,7 +91,7 @@
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
-                                            <Button Content="Edytuj" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right"/>
+                                            <Button Content="Edytuj" x:Name="buttonEditMusicPL" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right"/>
                                             <Button Content="Usuń" x:Name="buttonDeleteMusicPL" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
                                         </StackPanel>
 

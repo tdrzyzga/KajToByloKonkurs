@@ -190,18 +190,35 @@ namespace KajToBylo
             refreshListsView(checkCategory(buttonDeleteQuestion.Name));
         }
 
+        private void buttonEditQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Button buttonEditQuestion = sender as System.Windows.Controls.Button;
+            QuestionAnswers question = buttonEditQuestion.DataContext as QuestionAnswers;
+
+            DialogEditQuestion editQuestion = new DialogEditQuestion(checkCategory(buttonEditQuestion.Name), question);
+            editQuestion.ShowDialog();
+
+            if (editQuestion.DialogEditQuestionResult)
+            {
+                collections.ChangeItem(checkCategory(buttonEditQuestion.Name), question);
+                refreshListsView(checkCategory(buttonEditQuestion.Name));
+            }
+
+            editQuestion.Close();
+        }
+
         private IndexCategory checkCategory(string button)
         {
-            if (button == "buttonDeleteMusicPL")
-                    return IndexCategory.MusicPL;
-            else if(button == "buttonDeleteMusicSL")
-                    return IndexCategory.MusicSL;
-            else if (button == "buttonDeleteMovie")
+            if (button == "buttonDeleteMusicPL" || button == "buttonEditMusicPL")
+                return IndexCategory.MusicPL;
+            else if (button == "buttonDeleteMusicSL" || button == "buttonEditMusicSL")
+                return IndexCategory.MusicSL;
+            else if (button == "buttonDeleteMovie" || button == "buttonEditMovie")
                 return IndexCategory.Movie;
             else
                 return IndexCategory.Book;
         }
-        
+
     }
 }
 
