@@ -168,6 +168,7 @@ namespace KajToBylo
             if (editQuestion.DialogEditQuestionResult)
             {
                 collections.ChangeItem(checkCategory(buttonEditQuestion.Name),question, editQuestion.Question);
+                myBase.ChangeQuestion(checkCategory(buttonEditQuestion.Name), question, editQuestion.Question);
                 refreshListsView(checkCategory(buttonEditQuestion.Name));
             }
 
