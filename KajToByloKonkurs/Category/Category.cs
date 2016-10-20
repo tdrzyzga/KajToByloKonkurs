@@ -41,5 +41,11 @@ namespace KajToBylo
         {
             listQuestionAnswers.Remove(question);
         }
+        
+        public void ChangeQuestion(QuestionAnswers questionBeforeChanges, QuestionAnswers questionAfterChanges)
+        {
+            listQuestionAnswers[listQuestionAnswers.IndexOf(questionBeforeChanges)] = questionAfterChanges;
+        }
+        
     }
 }
