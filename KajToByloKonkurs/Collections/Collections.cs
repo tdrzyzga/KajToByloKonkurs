@@ -3,110 +3,127 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.Windows.Data;
+using System.Windows.Controls;
 
 namespace KajToBylo
 {
     class Collections
     {
-        public ObservableCollection<QuestionAnswers> CollectionMusicPL { get; private set; }
-        public ObservableCollection<QuestionAnswers> CollectionMusicSL { get; private set; }
-        public ObservableCollection<QuestionAnswers> CollectionMovie { get; private set; }
-        public ObservableCollection<QuestionAnswers> CollectionBook { get; private set; }
+        public CollectionView CollectionMusicPL { get; set; }
+        public CollectionView CollectionMusicSL { get; set; }
+        public CollectionView CollectionMovie { get; set; }
+        public CollectionView CollectionBook { get; set; }
+
+        private ObservableCollection<QuestionAnswers> collectionMusicPL;
+        private ObservableCollection<QuestionAnswers> collectionMusicSL;
+        private ObservableCollection<QuestionAnswers> collectionMovie;
+        private ObservableCollection<QuestionAnswers> collectionBook;
+
+
+        private string filterText;
 
         public Collections()
         {
-            CollectionMusicPL = new ObservableCollection<QuestionAnswers>();
-            CollectionMusicSL = new ObservableCollection<QuestionAnswers>();
-            CollectionMovie = new ObservableCollection<QuestionAnswers>();
-            CollectionBook = new ObservableCollection<QuestionAnswers>();
+            collectionMusicPL = new ObservableCollection<QuestionAnswers>();
+            collectionMusicSL = new ObservableCollection<QuestionAnswers>();
+            collectionMovie = new ObservableCollection<QuestionAnswers>();
+            collectionBook = new ObservableCollection<QuestionAnswers>();
+
+            CollectionMusicPL = new CollectionView(collectionMusicPL);
+            CollectionMusicPL = (CollectionView)CollectionViewSource.GetDefaultView(collectionMusicPL);
+            CollectionMusicPL.Filter = questionSearch;
+
+            CollectionMusicSL = new CollectionView(collectionMusicSL);
+            CollectionMusicSL = (CollectionView)CollectionViewSource.GetDefaultView(collectionMusicSL);
+            CollectionMusicSL.Filter = questionSearch;
+
+            CollectionMovie = new CollectionView(collectionMovie);
+            CollectionMovie = (CollectionView)CollectionViewSource.GetDefaultView(collectionMovie);
+            CollectionMovie.Filter = questionSearch;
+
+            CollectionBook = new CollectionView(collectionBook);
+            CollectionBook = (CollectionView)CollectionViewSource.GetDefaultView(collectionBook);
+            CollectionBook.Filter = questionSearch;
+
+
         }
 
-        public void AddItemsToCollections(MainWindow.IndexCategory index, QuestionAnswers question)
+        private bool questionSearch(object item)
         {
-            switch (index)
+            QuestionAnswers question = item as QuestionAnswers;
+
+            if (filterText == null || question.Question.Contains(filterText))
+                return true;
+            else
+                return false;
+        }
+
+        public void Refresh(TextBox texBox)
+        {
+            filterText = texBox.Text;
+            
+            switch (texBox.Name)
             {
-                case MainWindow.IndexCategory.MusicPL:
-                    CollectionMusicPL.Insert(0, question);
+                case "filterMusicPL":
+                    CollectionMusicPL.Refresh();
                     break;
-                case MainWindow.IndexCategory.MusicSL:
-                    CollectionMusicSL.Insert(0, question);
+                case "filterMusicSL":
+                    CollectionMusicSL.Refresh();
                     break;
-                case MainWindow.IndexCategory.Movie:
-                    CollectionMovie.Insert(0, question);
+                case "filterMovie":
+                    CollectionMovie.Refresh();
                     break;
-                case MainWindow.IndexCategory.Book:
-                    CollectionBook.Insert(0, question);
+                case "filterBook":
+                    CollectionBook.Refresh();
                     break;
             }
         }
 
-        public void SetCollections(MainWindow.IndexCategory index, Category category)
+        public void AddItemsToCollections(MainWindow.IndexCategory indexCategory, QuestionAnswers question)
         {
-            switch (index)
-            {
-                case MainWindow.IndexCategory.MusicPL:
-                    foreach (var i in category.ReturnListQuestions())
-                        CollectionMusicPL.Add(i);
-                    break;
-                case MainWindow.IndexCategory.MusicSL:
-                    foreach (var i in category.ReturnListQuestions())
-                        CollectionMusicSL.Add(i);
-                    break;
-                case MainWindow.IndexCategory.Movie:
-                    foreach (var i in category.ReturnListQuestions())
-                        CollectionMovie.Add(i);
-                    break;
-                case MainWindow.IndexCategory.Book:
-                    foreach (var i in category.ReturnListQuestions())
-                        CollectionBook.Add(i);
-                    break;
-            }
+            var collection = setCategory(indexCategory);
+            collection.Insert(0, question);
         }
 
-        public void DeleteItem(MainWindow.IndexCategory index, QuestionAnswers question)
+        public void SetCollections(MainWindow.IndexCategory indexCategory, Category category)
         {
-            switch (index)
-            {
-                case MainWindow.IndexCategory.MusicPL:
-                    CollectionMusicPL.Remove(question);
-                    break;
-                case MainWindow.IndexCategory.MusicSL:
-                    CollectionMusicSL.Remove(question);
-                    break;
-                case MainWindow.IndexCategory.Movie:
-                    CollectionMovie.Remove(question);
-                    break;
-                case MainWindow.IndexCategory.Book:
-                    CollectionBook.Remove(question);
-                    break;
-            }
+            var collection = setCategory(indexCategory);
+            foreach (var i in category.ReturnListQuestions())
+                collection.Add(i);
         }
 
-        public void ChangeItem(MainWindow.IndexCategory category, QuestionAnswers questionBeforeChanges, QuestionAnswers questionAfterChanges)
+        public void DeleteItem(MainWindow.IndexCategory indexCategory, QuestionAnswers question)
         {
-            switch (category)
-            {
-                case MainWindow.IndexCategory.MusicPL:
-                    CollectionMusicPL[CollectionMusicPL.IndexOf(questionBeforeChanges)] = questionAfterChanges;
-                    break;
-                case MainWindow.IndexCategory.MusicSL:
-                    CollectionMusicSL[CollectionMusicSL.IndexOf(questionBeforeChanges)] = questionAfterChanges;
-                    break;
-                case MainWindow.IndexCategory.Movie:
-                    CollectionMovie[CollectionMovie.IndexOf(questionBeforeChanges)] = questionAfterChanges;
-                    break;
-                case MainWindow.IndexCategory.Book:
-                    CollectionBook[CollectionBook.IndexOf(questionBeforeChanges)] = questionAfterChanges;
-                    break;
-            }
+            var collection = setCategory(indexCategory);
+            collection.Remove(question);
+        }
+
+        public void ChangeItem(MainWindow.IndexCategory indexCategory, QuestionAnswers questionBeforeChanges, QuestionAnswers questionAfterChanges)
+        {
+            var collection = setCategory(indexCategory);
+            collection[collection.IndexOf(questionBeforeChanges)] = questionAfterChanges;
         }
 
         public void Clear()
         {
-            CollectionMusicPL.Clear();
-            CollectionMusicSL.Clear();
-            CollectionMovie.Clear();
-            CollectionBook.Clear();
+            collectionMusicPL.Clear();
+            collectionMusicSL.Clear();
+            collectionMovie.Clear();
+            collectionBook.Clear();
+        }
+
+        private ObservableCollection<QuestionAnswers> setCategory(MainWindow.IndexCategory category)
+        {
+            if (MainWindow.IndexCategory.MusicPL == category)
+                return collectionMusicPL;
+            else if (MainWindow.IndexCategory.MusicSL == category)
+                return collectionMusicSL;
+            else if (MainWindow.IndexCategory.Movie == category)
+                return collectionMovie;
+            else
+                return collectionBook;
+           
         }
     }
 }

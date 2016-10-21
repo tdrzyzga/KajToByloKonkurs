@@ -46,12 +46,6 @@ namespace KajToBylo
             dictinaryCategory[key].ChangeQuestion(questionBeforeChanges, questionAfterChanges);
         }
         
-        
-        /* public void Used(KajToBylo.MainWindow.IndexCategory key, QuestionAnswers question)
-         {
-             dictinaryCategory[key].Used(question);
-         }*/
-
         public void WriteAll()
         {
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -82,30 +76,6 @@ namespace KajToBylo
                 }
             }
         }
-
-
-        /*    public void ReadAll(string name, Base obj)
-            {
-                string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-                using (Stream input = File.OpenRead(folder + @"\KajToBylo\" + singelBase.BaseName + @"\config.ktb"))
-                {
-                    BinaryFormatter bf = new BinaryFormatter();
-                    singelBase = (Base)bf.Deserialize(input);
-                }
-
-                for (int i = 0; i < singelBase.ListCategory.Count; ++i)
-                {
-                    using (Stream input = File.OpenRead(folder + @"\KajToBylo\" + singelBase.BaseName + @"\" + singelBase.ListCategory[i]))
-                    {
-                        BinaryFormatter bf = new BinaryFormatter();
-                        category.Add((QuestionAnswers)bf.Deserialize(input));
-                    }
-                }
-            }*/
-
-
-
     }
 }
 

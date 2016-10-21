@@ -43,7 +43,7 @@
                 <TabItem Header="Muzyka Polska">
                     <Grid ShowGridLines="True">
 
-                        <ListView ItemsSource="{Binding CollectionMusicPL}" x:Name="listViewMusicPL" MouseDoubleClick="getSelectedItem" FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectedIndex="1">
+                        <ListView ItemsSource="{Binding CollectionMusicPL}" x:Name="listViewMusicPL" MouseDoubleClick="getSelectedItem" FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectedIndex="1" Margin="0,28,0,0">
                             <ListView.Resources>
                                 <local:OrdinalConverter x:Key="OrdinalConverter" />
                             </ListView.Resources>
@@ -97,80 +97,195 @@
 
                                     </Grid>
                                 </DataTemplate>
-                            </ListView.ItemTemplate>                            
+                            </ListView.ItemTemplate>
                         </ListView>
+                        <TextBox x:Name="filterMusicPL" Height="23" TextWrapping="Wrap" TextChanged="FilterText_TextChanged" BorderBrush="#FF828790" VerticalAlignment="Top" />
                     </Grid>
                 </TabItem>
                 <TabItem Header="Muzyka Śląska">
                     <Grid ShowGridLines="True">
-                        <ListView ItemsSource="{Binding CollectionMusicSL}" x:Name="listViewMusicSL" MouseDoubleClick="getSelectedItem" FontSize="12">
+
+                        <ListView ItemsSource="{Binding CollectionMusicSL}" x:Name="listViewMusicSL" MouseDoubleClick="getSelectedItem" FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectedIndex="1" Margin="0,28,0,0">
                             <ListView.Resources>
                                 <local:OrdinalConverter x:Key="OrdinalConverter" />
-                                <DataTemplate x:Key="OrdinalColumnDataTemplate">
-                                    <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem},
-            Converter={StaticResource ResourceKey=OrdinalConverter}}" HorizontalAlignment="Right" />
-                                </DataTemplate>
                             </ListView.Resources>
-                            <ListView.View>
-                                <GridView>
-                                    <GridView.ColumnHeaderContainerStyle>
-                                        <Style TargetType="{x:Type GridViewColumnHeader}">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
-                                        </Style>
-                                    </GridView.ColumnHeaderContainerStyle>
-                                    <GridViewColumn CellTemplate="{StaticResource ResourceKey=OrdinalColumnDataTemplate}" Width="20"/>
-                                    <GridViewColumn/>
-                                </GridView>
-                            </ListView.View>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Style.Resources>
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}" />
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                                    </Style.Resources>
+                                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Used}" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="400*"/>
+                                            <ColumnDefinition Width="120*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel   Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Converter={StaticResource ResourceKey=OrdinalConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Question}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="a)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseA}" FontSize="12" Padding="2" Width="100"  />
+                                                <Label Content="b)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseB}" FontSize="12" Padding="2" Width="100" />
+                                                <Label Content="c)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseC}" FontSize="12" Padding="2" Width="100" />
+                                                <Label Content="d)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseD}" FontSize="12" Padding="2" Width="100" />
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
+                                            <Button Content="Edytuj" x:Name="buttonEditMusicSL" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click"/>
+                                            <Button Content="Usuń" x:Name="buttonDeleteMusicSL" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
+                                        </StackPanel>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
+                        <TextBox x:Name="filterMusicSL" Height="23" TextWrapping="Wrap" TextChanged="FilterText_TextChanged" BorderBrush="#FF828790" VerticalAlignment="Top" />
                     </Grid>
                 </TabItem>
                 <TabItem Header="Film">
                     <Grid ShowGridLines="True">
-                        <ListView  ItemsSource="{Binding CollectionMovie}"  x:Name="listViewMovie">
-                            <ListView.View>
-                                <GridView>
-                                    <GridView.ColumnHeaderContainerStyle>
-                                        <Style TargetType="{x:Type GridViewColumnHeader}">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
-                                        </Style>
-                                    </GridView.ColumnHeaderContainerStyle>
-                                    <GridViewColumn>
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <CheckBox Margin="0" VerticalAlignment="Center" IsChecked="{Binding IsChecked}"/>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn>
-                                    </GridViewColumn>
-                                </GridView>
-                            </ListView.View>
+
+                        <ListView ItemsSource="{Binding CollectionMovie}" x:Name="listViewMovie" MouseDoubleClick="getSelectedItem" FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectedIndex="1" Margin="0,28,0,0">
+                            <ListView.Resources>
+                                <local:OrdinalConverter x:Key="OrdinalConverter" />
+                            </ListView.Resources>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Style.Resources>
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}" />
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                                    </Style.Resources>
+                                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Used}" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="400*"/>
+                                            <ColumnDefinition Width="120*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel   Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Converter={StaticResource ResourceKey=OrdinalConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Question}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="a)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseA}" FontSize="12" Padding="2" Width="100"  />
+                                                <Label Content="b)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseB}" FontSize="12" Padding="2" Width="100" />
+                                                <Label Content="c)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseC}" FontSize="12" Padding="2" Width="100" />
+                                                <Label Content="d)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseD}" FontSize="12" Padding="2" Width="100" />
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
+                                            <Button Content="Edytuj" x:Name="buttonEditMovie" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click"/>
+                                            <Button Content="Usuń" x:Name="buttonDeleteMovie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
+                                        </StackPanel>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
+                        <TextBox x:Name="filterMovie" Height="23" TextWrapping="Wrap" TextChanged="FilterText_TextChanged" BorderBrush="#FF828790" VerticalAlignment="Top" />
                     </Grid>
                 </TabItem>
-                <TabItem Header="Książka">
+                <TabItem Header="Book">
                     <Grid ShowGridLines="True">
-                        <ListView  ItemsSource="{Binding CollectionBook}"  x:Name="listViewBook">
-                            <ListView.View>
-                                <GridView>
-                                    <GridView.ColumnHeaderContainerStyle>
-                                        <Style TargetType="{x:Type GridViewColumnHeader}">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
-                                        </Style>
-                                    </GridView.ColumnHeaderContainerStyle>
-                                    <GridViewColumn>
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <CheckBox Margin="0" VerticalAlignment="Center" IsChecked="{Binding Path=Used}" Content="{Binding Path=Used}"/>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn>
-                                    </GridViewColumn>
-                                </GridView>
-                            </ListView.View>
+
+                        <ListView ItemsSource="{Binding CollectionBook}" x:Name="listViewBook" MouseDoubleClick="getSelectedItem" FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectedIndex="1" Margin="0,28,0,0">
+                            <ListView.Resources>
+                                <local:OrdinalConverter x:Key="OrdinalConverter" />
+                            </ListView.Resources>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Style.Resources>
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}" />
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                                    </Style.Resources>
+                                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Used}" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="400*"/>
+                                            <ColumnDefinition Width="120*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel   Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Converter={StaticResource ResourceKey=OrdinalConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Question}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="a)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseA}" FontSize="12" Padding="2" Width="100"  />
+                                                <Label Content="b)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseB}" FontSize="12" Padding="2" Width="100" />
+                                                <Label Content="c)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseC}" FontSize="12" Padding="2" Width="100" />
+                                                <Label Content="d)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseD}" FontSize="12" Padding="2" Width="100" />
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
+                                            <Button Content="Edytuj" x:Name="buttonEditBook" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click"/>
+                                            <Button Content="Usuń" x:Name="buttonDeleteBook" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
+                                        </StackPanel>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
+                        <TextBox x:Name="filterBook" Height="23" TextWrapping="Wrap" TextChanged="FilterText_TextChanged" BorderBrush="#FF828790" VerticalAlignment="Top" />
                     </Grid>
                 </TabItem>
             </TabControl.Items>

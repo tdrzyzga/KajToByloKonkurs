@@ -27,11 +27,12 @@ namespace KajToBylo
 
         private Base myBase;
         private Collections collections;
-
+               
         public MainWindow()
         {
             collections = new Collections();
             InitializeComponent();
+
             tabControl.DataContext = collections;
         }
 
@@ -63,7 +64,7 @@ namespace KajToBylo
                 myBase.SetCategory(newQuestion.Category, newQuestion.Question);
                 collections.AddItemsToCollections(newQuestion.Category, newQuestion.Question);
 
-                refreshListsView(newQuestion.Category);
+                //refreshListsView(newQuestion.Category);
 
             }
             newQuestion.Close();
@@ -142,9 +143,6 @@ namespace KajToBylo
             else
                 question.Used = true;
             listView.Items.Refresh();
-            //myBase.Used(IndexCategory.MusicPL, question);
-
-            //System.Windows.MessageBox.Show(question.ToString());
         }
 
         private void buttonDeleteQuestion_Click(object sender, RoutedEventArgs e)
@@ -154,7 +152,6 @@ namespace KajToBylo
 
             collections.DeleteItem(checkCategory(buttonDeleteQuestion.Name), question);
             myBase.DeleteQuestion(checkCategory(buttonDeleteQuestion.Name), question);
-            refreshListsView(checkCategory(buttonDeleteQuestion.Name));
         }
 
         private void buttonEditQuestion_Click(object sender, RoutedEventArgs e)
@@ -169,7 +166,6 @@ namespace KajToBylo
             {
                 collections.ChangeItem(checkCategory(buttonEditQuestion.Name),question, editQuestion.Question);
                 myBase.ChangeQuestion(checkCategory(buttonEditQuestion.Name), question, editQuestion.Question);
-                refreshListsView(checkCategory(buttonEditQuestion.Name));
             }
 
             editQuestion.Close();
@@ -221,6 +217,12 @@ namespace KajToBylo
 
             Environment.Exit(0);
         }
+
+        private void FilterText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            collections.Refresh(sender as System.Windows.Controls.TextBox);
+        }
+
     }
 }
 
