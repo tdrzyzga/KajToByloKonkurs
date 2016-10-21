@@ -10,17 +10,16 @@ namespace KajToBylo
 {
     class Collections
     {
-        public CollectionView CollectionMusicPL { get; set; }
-        public CollectionView CollectionMusicSL { get; set; }
-        public CollectionView CollectionMovie { get; set; }
-        public CollectionView CollectionBook { get; set; }
+        public CollectionView CollectionMusicPL { get; private set; }
+        public CollectionView CollectionMusicSL { get; private set; }
+        public CollectionView CollectionMovie { get; private set; }
+        public CollectionView CollectionBook { get; private set; }
 
         private ObservableCollection<QuestionAnswers> collectionMusicPL;
         private ObservableCollection<QuestionAnswers> collectionMusicSL;
         private ObservableCollection<QuestionAnswers> collectionMovie;
         private ObservableCollection<QuestionAnswers> collectionBook;
-
-
+        
         private string filterText;
 
         public Collections()
