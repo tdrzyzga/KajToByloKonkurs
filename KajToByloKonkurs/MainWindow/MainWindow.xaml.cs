@@ -22,7 +22,6 @@ namespace KajToBylo
     public partial class MainWindow : Window
     {
         public enum IndexCategory { MusicPL, MusicSL, Movie, Book };
-        public enum CorrectAnswer { AnswerA, AnswerB, AnswerC, AnswerD };
         public static string[] NameCategory = { "Muzyka Polska", "Muzyka Śląska", "Film", "Książka" };
 
         private Base myBase;
