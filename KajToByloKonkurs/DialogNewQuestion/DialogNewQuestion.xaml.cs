@@ -16,7 +16,7 @@ namespace KajToBylo
     /// <summary>
     /// Interaction logic for DialogNewQuestion.xaml
     /// </summary>
-    public partial class DialogNewQuestion : Window
+        public partial class DialogNewQuestion : Window
     {
         public bool DialogNewQuestionResult { get; private set; }
         public MainWindow.IndexCategory Category { get; private set; }
@@ -31,13 +31,13 @@ namespace KajToBylo
         {
             DialogNewQuestionResult = true;
 
-            Question = new QuestionAnswers(newQuestion.Text, checkCorrectAnswer(), dialogNewQuestionAnswerA.Text, dialogNewQuestionAnswerB.Text, dialogNewQuestionAnswerC.Text, dialogNewQuestionAnswerD.Text, DateTime.Now);
-            Category = checkCategory();
+            Question = new QuestionAnswers(newQuestion.Text, (Tuple.Create((bool)dialogNewQuestionA.IsChecked, dialogNewQuestionAnswerA.Text)), (Tuple.Create((bool)dialogNewQuestionB.IsChecked, dialogNewQuestionAnswerB.Text)), (Tuple.Create((bool)dialogNewQuestionC.IsChecked, dialogNewQuestionAnswerC.Text)), (Tuple.Create((bool)dialogNewQuestionD.IsChecked, dialogNewQuestionAnswerD.Text)), DateTime.Now);
+            Category = CheckCategory();
 
             this.Hide();
         }
 
-        private MainWindow.IndexCategory checkCategory()
+        private MainWindow.IndexCategory CheckCategory()
         {
             if (dialogNewQuestionMusicPL.IsChecked == true)
                 return MainWindow.IndexCategory.MusicPL;
@@ -49,7 +49,7 @@ namespace KajToBylo
                 return MainWindow.IndexCategory.Book;
         }
 
-        private MainWindow.CorrectAnswer checkCorrectAnswer()
+        /*private MainWindow.CorrectAnswer CheckCorrectAnswer()
         {
             if (dialogNewQuestionA.IsChecked == true)
                 return MainWindow.CorrectAnswer.AnswerA;
@@ -60,7 +60,7 @@ namespace KajToBylo
             else
                 return MainWindow.CorrectAnswer.AnswerD;
         }
-
+        */
         private void dialogNewQuestionCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
