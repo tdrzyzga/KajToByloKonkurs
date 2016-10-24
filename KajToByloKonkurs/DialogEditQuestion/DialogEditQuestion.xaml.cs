@@ -16,36 +16,39 @@ namespace KajToBylo
     /// <summary>
     /// Interaction logic for DialogEditQuestion.xaml
     /// </summary>
-    public partial class DialogEditQuestion : Window
+        public partial class DialogEditQuestion : Window
     {
         public bool DialogEditQuestionResult { get; private set; }
         public QuestionAnswers Question { get; private set; }
 
         private MainWindow.IndexCategory Category;
-        private MainWindow.CorrectAnswer CorrectAnswer;
+
 
         public DialogEditQuestion(MainWindow.IndexCategory category, QuestionAnswers question)
         {
             InitializeComponent();
 
             Category = category;
-            CorrectAnswer = question.GoodAnswer;
 
             editQuestion.Text = question.Question;
-            dialogEditQuestionAnswerA.Text = question.ResponseA;
-            dialogEditQuestionAnswerB.Text = question.ResponseB;
-            dialogEditQuestionAnswerC.Text = question.ResponseC;
-            dialogEditQuestionAnswerD.Text = question.ResponseD;
-            
+            dialogEditQuestionAnswerA.Text = question.ResponseA.Item2;
+            dialogEditQuestionAnswerB.Text = question.ResponseB.Item2;
+            dialogEditQuestionAnswerC.Text = question.ResponseC.Item2;
+            dialogEditQuestionAnswerD.Text = question.ResponseD.Item2;
+
+            dialogEditQuestionA.IsChecked = question.ResponseA.Item1;
+            dialogEditQuestionB.IsChecked = question.ResponseB.Item1;
+            dialogEditQuestionC.IsChecked = question.ResponseC.Item1;
+            dialogEditQuestionD.IsChecked = question.ResponseD.Item1;
             SetCategory();
-            SetCorrectAnswer();
+            
         }
 
         private void dialogEditQuestionSave_Click(object sender, RoutedEventArgs e)
         {
             DialogEditQuestionResult = true;
 
-            Question = new QuestionAnswers(editQuestion.Text, CheckCorrectAnswer(), dialogEditQuestionAnswerA.Text, dialogEditQuestionAnswerB.Text, dialogEditQuestionAnswerC.Text, dialogEditQuestionAnswerD.Text, DateTime.Now);
+            Question = new QuestionAnswers(editQuestion.Text, (Tuple.Create((bool)dialogEditQuestionA.IsChecked, dialogEditQuestionAnswerA.Text)), (Tuple.Create((bool)dialogEditQuestionB.IsChecked, dialogEditQuestionAnswerB.Text)), (Tuple.Create((bool)dialogEditQuestionC.IsChecked, dialogEditQuestionAnswerC.Text)), (Tuple.Create((bool)dialogEditQuestionD.IsChecked, dialogEditQuestionAnswerD.Text)), DateTime.Now);
          
             this.Hide();
         }
@@ -69,7 +72,7 @@ namespace KajToBylo
             }
         }
 
-        private void SetCorrectAnswer()
+        /*private void SetCorrectAnswer()
         {
             switch (CorrectAnswer)
             {
@@ -86,7 +89,7 @@ namespace KajToBylo
                     dialogEditQuestionD.IsChecked = true;
                     break;
             }
-        }
+        }*/
 
 
         private MainWindow.IndexCategory CheckCategory()
@@ -100,8 +103,8 @@ namespace KajToBylo
             else
                 return MainWindow.IndexCategory.Book;
         }
-
-        private MainWindow.CorrectAnswer CheckCorrectAnswer()
+        
+        /*private MainWindow.CorrectAnswer CheckCorrectAnswer()
         {
             if (dialogEditQuestionA.IsChecked == true)
                 return MainWindow.CorrectAnswer.AnswerA;
@@ -111,7 +114,7 @@ namespace KajToBylo
                 return MainWindow.CorrectAnswer.AnswerC;
             else
                 return MainWindow.CorrectAnswer.AnswerD;
-        }
+        }*/
 
         private void dialogEditQuestionCancel_Click(object sender, RoutedEventArgs e)
         {
