@@ -76,59 +76,58 @@
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
-                                                                                        <StackPanel Orientation="Horizontal">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <StackPanel.Style>
-                                                        <Style TargetType="StackPanel">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Question}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="a)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding ResponseA.Item1}" Value="True">
-                                                                    <Setter Property="Background" Value="green"/>
+                                                                    <Setter Property="Background" Value="GreenYellow"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
-                                                    </StackPanel.Style>
-                                                    <Label Content="a)" Padding="2" Width="20" />
-                                                    <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" Width="100"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <StackPanel.Style>
-                                                        <Style TargetType="StackPanel">
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                                <Label Content="b)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseB.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding ResponseB.Item1}" Value="True">
-                                                                    <Setter Property="Background" Value="green"/>
+                                                                    <Setter Property="Background" Value="GreenYellow"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
-                                                    </StackPanel.Style>
-                                                    <Label Content="b)" Padding="2" Width="20" />
-                                                    <TextBlock Text="{Binding ResponseB.Item2}" FontSize="12" Padding="2" Width="100"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <StackPanel.Style>
-                                                        <Style TargetType="StackPanel">
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                                <Label Content="c)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseC.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding ResponseC.Item1}" Value="True">
-                                                                    <Setter Property="Background" Value="green"/>
+                                                                    <Setter Property="Background" Value="GreenYellow"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
-                                                    </StackPanel.Style>
-                                                    <Label Content="c)" Padding="2" Width="20" />
-                                                    <TextBlock Text="{Binding ResponseC.Item2}" FontSize="12" Padding="2" Width="100"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <StackPanel.Style>
-                                                        <Style TargetType="StackPanel">
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                                <Label Content="d)" Padding="2" Width="20" />
+                                                <TextBlock Text="{Binding ResponseD.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding ResponseD.Item1}" Value="True">
-                                                                    <Setter Property="Background" Value="green"/>
+                                                                    <Setter Property="Background" Value="GreenYellow"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
-                                                    </StackPanel.Style>
-                                                    <Label Content="d)" Padding="2" Width="20" />
-                                                    <TextBlock Text="{Binding ResponseD.Item2}" FontSize="12" Padding="2" Width="100"/>
-                                                </StackPanel>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
                                             </StackPanel>
                                         </StackPanel>
 

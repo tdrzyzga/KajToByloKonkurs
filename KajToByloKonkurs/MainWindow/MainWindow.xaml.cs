@@ -63,7 +63,7 @@ namespace KajToBylo
                 myBase.SetCategory(newQuestion.Category, newQuestion.Question);
                 collections.AddItemsToCollections(newQuestion.Category, newQuestion.Question);
 
-                //refreshListsView(newQuestion.Category);
+                refreshListsView(newQuestion.Category);
 
             }
             newQuestion.Close();

@@ -72,26 +72,6 @@ namespace KajToBylo
             }
         }
 
-        /*private void SetCorrectAnswer()
-        {
-            switch (CorrectAnswer)
-            {
-                case MainWindow.CorrectAnswer.AnswerA:
-                    dialogEditQuestionA.IsChecked = true;
-                    break;
-                case MainWindow.CorrectAnswer.AnswerB:
-                    dialogEditQuestionB.IsChecked = true;
-                    break;
-                case MainWindow.CorrectAnswer.AnswerC:
-                    dialogEditQuestionC.IsChecked = true;
-                    break;
-                case MainWindow.CorrectAnswer.AnswerD:
-                    dialogEditQuestionD.IsChecked = true;
-                    break;
-            }
-        }*/
-
-
         private MainWindow.IndexCategory CheckCategory()
         {
             if (dialogEditQuestionMusicPL.IsChecked == true)
@@ -103,18 +83,6 @@ namespace KajToBylo
             else
                 return MainWindow.IndexCategory.Book;
         }
-        
-        /*private MainWindow.CorrectAnswer CheckCorrectAnswer()
-        {
-            if (dialogEditQuestionA.IsChecked == true)
-                return MainWindow.CorrectAnswer.AnswerA;
-            else if (dialogEditQuestionB.IsChecked == true)
-                return MainWindow.CorrectAnswer.AnswerB;
-            else if (dialogEditQuestionC.IsChecked == true)
-                return MainWindow.CorrectAnswer.AnswerC;
-            else
-                return MainWindow.CorrectAnswer.AnswerD;
-        }*/
 
         private void dialogEditQuestionCancel_Click(object sender, RoutedEventArgs e)
         {
