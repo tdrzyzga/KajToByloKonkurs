@@ -72,18 +72,6 @@ namespace KajToBylo
             }
         }
 
-        private MainWindow.IndexCategory CheckCategory()
-        {
-            if (dialogEditQuestionMusicPL.IsChecked == true)
-                return MainWindow.IndexCategory.MusicPL;
-            else if (dialogEditQuestionMusicSL.IsChecked == true)
-                return MainWindow.IndexCategory.MusicSL;
-            else if (dialogEditQuestionMovie.IsChecked == true)
-                return MainWindow.IndexCategory.Movie;
-            else
-                return MainWindow.IndexCategory.Book;
-        }
-
         private void dialogEditQuestionCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();

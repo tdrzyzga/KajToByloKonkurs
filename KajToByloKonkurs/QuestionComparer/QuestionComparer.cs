@@ -25,9 +25,9 @@ namespace KajToBylo
             else if (a.Used && b.Used)
             {
                 if (a.GeneratedData < b.GeneratedData)
-                    return -1;
-                else
                     return 1;
+                else
+                    return -1;
             }
 
             return 0;
