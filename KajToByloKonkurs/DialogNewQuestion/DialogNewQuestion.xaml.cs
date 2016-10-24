@@ -49,18 +49,6 @@ namespace KajToBylo
                 return MainWindow.IndexCategory.Book;
         }
 
-        /*private MainWindow.CorrectAnswer CheckCorrectAnswer()
-        {
-            if (dialogNewQuestionA.IsChecked == true)
-                return MainWindow.CorrectAnswer.AnswerA;
-            else if (dialogNewQuestionB.IsChecked == true)
-                return MainWindow.CorrectAnswer.AnswerB;
-            else if (dialogNewQuestionC.IsChecked == true)
-                return MainWindow.CorrectAnswer.AnswerC;
-            else
-                return MainWindow.CorrectAnswer.AnswerD;
-        }
-        */
         private void dialogNewQuestionCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
