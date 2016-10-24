@@ -349,7 +349,7 @@
                         <TextBox x:Name="filterMovie" Height="23" TextWrapping="Wrap" TextChanged="FilterText_TextChanged" BorderBrush="#FF828790" VerticalAlignment="Top" />
                     </Grid>
                 </TabItem>
-                <TabItem Header="Book">
+                <TabItem Header="Książka">
                     <Grid ShowGridLines="True">
 
                         <ListView ItemsSource="{Binding CollectionBook}" x:Name="listViewBook" MouseDoubleClick="getSelectedItem" FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectedIndex="1" Margin="0,28,0,0">
