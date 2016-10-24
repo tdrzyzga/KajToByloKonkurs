@@ -64,17 +64,31 @@ namespace KajToBylo
             }
         }
 
-        public void ReadALL(string folder)
+        public bool ReadALL(string folder)
         {
+            bool result = true;
+   
             for (int i = 0; i < dictinaryCategory.Count; i++)
             {
-                using (Stream input = File.OpenRead(folder + @"\" + KajToBylo.MainWindow.NameCategory[i] + @".ktb"))
+                if (File.Exists(folder + @"\" + KajToBylo.MainWindow.NameCategory[i] + @".ktb"))
                 {
-                    BinaryFormatter bf = new BinaryFormatter();
+                    using (Stream input = File.OpenRead(folder + @"\" + KajToBylo.MainWindow.NameCategory[i] + @".ktb"))
+                    {
+                        BinaryFormatter bf = new BinaryFormatter();
 
-                    dictinaryCategory[(KajToBylo.MainWindow.IndexCategory)i].AddQuestionRange((Category)bf.Deserialize(input));
+                        dictinaryCategory[(KajToBylo.MainWindow.IndexCategory)i].AddQuestionRange((Category)bf.Deserialize(input));
+                    }
+
+                    result = true;
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Nie można otworzyć bazy " + folder);
+                    result = false;
+                    break;
                 }
             }
+            return result;
         }
     }
 }
