@@ -1,0 +1,57 @@
+﻿<Window x:Class="KajToBylo.DialogEditQuestion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KajToBylo"
+        mc:Ignorable="d"
+        Title="DialogEditQuestion" Height="150" Width="620" MinHeight="150" MinWidth="620" MaxWidth="620" MaxHeight="150" Padding="0,3" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+            <StackPanel Height="76">
+                <StackPanel Height="22">
+                    <Grid Height="23" Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton x:Name="dialogEditQuestionMusicPL" Content="Muzyka Polska" Margin="23,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" IsEnabled="False" />
+                        <RadioButton x:Name="dialogEditQuestionMusicSL" Content="Muzyka Śląska" Grid.Column="1" HorizontalAlignment="Left" Margin="23,0,0,0" VerticalAlignment="Center" IsEnabled="False" />
+                        <RadioButton x:Name="dialogEditQuestionMovie" Content="Film" Grid.Column="2" HorizontalAlignment="Left" Margin="23,0,0,0" VerticalAlignment="Center" IsEnabled="False" />
+                        <RadioButton x:Name="dialogEditQuestionBook" Content="Książka" Grid.Column="3" HorizontalAlignment="Left" Margin="23,0,0,0" VerticalAlignment="Center" IsEnabled="False" />
+                    </Grid>
+                </StackPanel>
+                <TextBox x:Name="editQuestion" Height="23" TextWrapping="Wrap" Text="Nowe pytanie" Margin="3"/>
+                <StackPanel Height="22" Margin="0,3">
+                    <Grid Height="23" Margin="3,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton x:Name="dialogEditQuestionA" Content="a)" Margin="2,0" VerticalAlignment="Center" HorizontalAlignment="Left" RenderTransformOrigin="-0.153,0.373"/>
+                        <RadioButton x:Name="dialogEditQuestionB" Content="b)" Grid.Column="1" HorizontalAlignment="Left" Margin="2,0" VerticalAlignment="Center"/>
+                        <RadioButton x:Name="dialogEditQuestionC" Content="c)" Grid.Column="2" Margin="2,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <RadioButton x:Name="dialogEditQuestionD" Content="d)" Grid.Column="3" HorizontalAlignment="Left" Margin="2,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="dialogEditQuestionAnswerA" Height="24" Margin="30,0,0,0" TextWrapping="Wrap"/>
+                        <TextBox x:Name="dialogEditQuestionAnswerB" Grid.Column="1" Height="23" Margin="30,0,0,0" TextWrapping="Wrap"/>
+                        <TextBox x:Name="dialogEditQuestionAnswerC" Grid.Column="2" Height="23" Margin="30,0,0,0" TextWrapping="Wrap"/>
+                        <TextBox x:Name="dialogEditQuestionAnswerD" Grid.Column="3" Height="23" Margin="30,0,0,0" TextWrapping="Wrap"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Height="27" Orientation="Horizontal" Margin="268,3,0,5" HorizontalAlignment="Right">
+                <StackPanel Width="120">
+                    <Button x:Name="dialogEditQuestionSave" Content="Zapisz" Margin="0,3,10,3" Padding="0" Click="dialogEditQuestionSave_Click"/>
+                </StackPanel>
+                <StackPanel Width="120">
+                    <Button x:Name="dialogEditQuestionCancel" Content="Anuluj" Margin="0,3,10,3" Padding="0" Click="dialogEditQuestionCancel_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
