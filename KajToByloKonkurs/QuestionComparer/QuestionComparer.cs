@@ -14,8 +14,10 @@ namespace KajToBylo
             {
                 if (a.GeneratedData < b.GeneratedData)
                     return 1;
-                else
+                else if (a.GeneratedData > b.GeneratedData)
                     return -1;
+                else
+                    return 0;
             }
 
             else if (a.Used && !b.Used)
@@ -26,8 +28,10 @@ namespace KajToBylo
             {
                 if (a.GeneratedData < b.GeneratedData)
                     return 1;
-                else
+                else if (a.GeneratedData > b.GeneratedData)
                     return -1;
+                else
+                    return 0;
             }
 
             return 0;

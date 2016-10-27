@@ -81,7 +81,7 @@
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal">
                                                 <Label Content="a)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" Width="100">
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>

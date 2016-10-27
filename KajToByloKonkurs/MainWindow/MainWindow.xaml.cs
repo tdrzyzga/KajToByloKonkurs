@@ -221,7 +221,6 @@ namespace KajToBylo
         {
             collections.Refresh(sender as System.Windows.Controls.TextBox);
         }
-
     }
 }
 
