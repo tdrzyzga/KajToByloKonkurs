@@ -22,17 +22,17 @@
 
             <ToolBar Height="34" x:Name="toolBar1" MinWidth="505" Background="{x:Null}" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
                 <Button x:Name="buttonNewBase" ToolTip="Utwórz nową bazę" Click="newBase_Click">
-                    <Image x:Name="image1" Stretch="Fill" Source="/KajToByloKonkurs;component/Images/new.png" StretchDirection="Both"  />
+                    <Image x:Name="image1" Stretch="Fill" Source="/Images/new.png" StretchDirection="Both"  />
                 </Button>
                 <Button x:Name="buttonOpenBase" ToolTip="Otwórz istniającą bazę" Click="openBase_Click">
-                    <Image x:Name="image2" Stretch="Fill" Source="/KajToByloKonkurs;component/Images/open.png" StretchDirection="Both" />
+                    <Image x:Name="image2" Stretch="Fill" Source="/Images/open.png" StretchDirection="Both" />
                 </Button>
                 <Button x:Name="buttonSaveBase" ToolTip="Zapisz bazę" Padding="1" IsEnabled="False" Click="saveBase_Click">
-                    <Image x:Name="image3" Stretch="Fill" Source="/KajToByloKonkurs;component/Images/save.png" StretchDirection="Both" />
+                    <Image x:Name="image3" Stretch="Fill" Source="/Images/save.png" StretchDirection="Both" />
                 </Button>
                 <Separator Height="27" Margin="0"/>
                 <Button x:Name="buttonNewQuestion" ToolTip="Dodaj nowe pytanie" Padding="1" VerticalAlignment="Stretch" Click="newQuestion_Click" IsEnabled="False">
-                    <Image x:Name="image4" Stretch="Fill" Source="/KajToByloKonkurs;component/Images/legend.png" StretchDirection="Both" />
+                    <Image x:Name="image4" Stretch="Fill" Source="/Images/legend.png" StretchDirection="Both" />
                 </Button>
 
             </ToolBar>
@@ -79,9 +79,16 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="{Binding Question}"/>
                                             </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Label Content="a)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" Width="100">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                                    <TextBlock Text="a)" FontSize="12" Padding="2" Width="20">
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -91,9 +98,11 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                                <Label Content="b)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseB.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                                    <TextBlock Text="b)" FontSize="12" Padding="2" Width="20">
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -103,9 +112,11 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                                <Label Content="c)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseC.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseB.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                                    <TextBlock Text="c)" FontSize="12" Padding="2" Width="20" >
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -115,9 +126,11 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                                <Label Content="d)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseD.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseC.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="3" Orientation="Horizontal">
+                                                    <TextBlock Text="d)" FontSize="12" Padding="2" Width="20" >
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -127,8 +140,10 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                            </StackPanel>
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseD.Item2}" FontSize="12" Padding="2" MinWidth="100" />
+                                                </StackPanel>
+                                            </Grid>
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
@@ -182,9 +197,16 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="{Binding Question}"/>
                                             </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Label Content="a)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" Width="100" >
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                                    <TextBlock Text="a)" FontSize="12" Padding="2" Width="20">
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -194,9 +216,11 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                                <Label Content="b)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseB.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                                    <TextBlock Text="b)" FontSize="12" Padding="2" Width="20">
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -206,9 +230,11 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                                <Label Content="c)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseC.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseB.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                                    <TextBlock Text="c)" FontSize="12" Padding="2" Width="20" >
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -218,9 +244,11 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                                <Label Content="d)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseD.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseC.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="3" Orientation="Horizontal">
+                                                    <TextBlock Text="d)" FontSize="12" Padding="2" Width="20" >
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -230,8 +258,10 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                            </StackPanel>
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseD.Item2}" FontSize="12" Padding="2" MinWidth="100" />
+                                                </StackPanel>
+                                            </Grid>
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
@@ -285,9 +315,16 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="{Binding Question}"/>
                                             </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Label Content="a)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" Width="100" >
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                                    <TextBlock Text="a)" FontSize="12" Padding="2" Width="20">
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -297,9 +334,11 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                                <Label Content="b)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseB.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                                    <TextBlock Text="b)" FontSize="12" Padding="2" Width="20">
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -309,9 +348,11 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                                <Label Content="c)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseC.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseB.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                                    <TextBlock Text="c)" FontSize="12" Padding="2" Width="20" >
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -321,9 +362,11 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                                <Label Content="d)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseD.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseC.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="3" Orientation="Horizontal">
+                                                    <TextBlock Text="d)" FontSize="12" Padding="2" Width="20" >
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -333,8 +376,10 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                            </StackPanel>
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseD.Item2}" FontSize="12" Padding="2" MinWidth="100" />
+                                                </StackPanel>
+                                            </Grid>
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
@@ -388,9 +433,16 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="{Binding Question}"/>
                                             </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Label Content="a)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" Width="100" >
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                                    <TextBlock Text="a)" FontSize="12" Padding="2" Width="20">
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -400,9 +452,11 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                                <Label Content="b)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseB.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                                    <TextBlock Text="b)" FontSize="12" Padding="2" Width="20">
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -412,9 +466,11 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                                <Label Content="c)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseC.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseB.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                                    <TextBlock Text="c)" FontSize="12" Padding="2" Width="20" >
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -424,9 +480,11 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                                <Label Content="d)" Padding="2" Width="20" />
-                                                <TextBlock Text="{Binding ResponseD.Item2}" FontSize="12" Padding="2" Width="100" >
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseC.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="3" Orientation="Horizontal">
+                                                    <TextBlock Text="d)" FontSize="12" Padding="2" Width="20" >
                                                     <TextBlock.Style>
                                                         <Style TargetType="TextBlock">
                                                             <Style.Triggers>
@@ -436,8 +494,10 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBlock.Style>
-                                                </TextBlock>
-                                            </StackPanel>
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseD.Item2}" FontSize="12" Padding="2" MinWidth="100" />
+                                                </StackPanel>
+                                            </Grid>
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
