@@ -147,6 +147,7 @@
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
+                                            <Button Content="Dodaj" x:Name="buttonAddToQuizMusicPL" ToolTip="Dodaj do zestawu konkursowego" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonAddToQuiz_Click"/>
                                             <Button Content="Edytuj" x:Name="buttonEditMusicPL" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click"/>
                                             <Button Content="Usuń" x:Name="buttonDeleteMusicPL" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
                                         </StackPanel>
@@ -512,7 +513,120 @@
                         <TextBox x:Name="filterBook" Height="23" TextWrapping="Wrap" TextChanged="FilterText_TextChanged" BorderBrush="#FF828790" VerticalAlignment="Top" />
                     </Grid>
                 </TabItem>
+                <TabItem Header="Konkurs">
+                    <Grid ShowGridLines="True">
+
+                        <ListView x:Name="listQuiz" FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectedIndex="1" Margin="0,28,0,0">
+                            <ListView.Resources>
+                                <local:OrdinalConverter x:Key="OrdinalConverter" />
+                            </ListView.Resources>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Style.Resources>
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}" />
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="White"/>
+                                    </Style.Resources>
+                                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="400*"/>
+                                            <ColumnDefinition Width="120*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel   Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Converter={StaticResource ResourceKey=OrdinalConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Question}"/>
+                                            </StackPanel>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                                    <TextBlock Text="a)" FontSize="12" Padding="2" Width="20">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding ResponseA.Item1}" Value="True">
+                                                                    <Setter Property="Background" Value="GreenYellow"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                                    <TextBlock Text="b)" FontSize="12" Padding="2" Width="20">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding ResponseB.Item1}" Value="True">
+                                                                    <Setter Property="Background" Value="GreenYellow"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseB.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                                    <TextBlock Text="c)" FontSize="12" Padding="2" Width="20" >
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding ResponseC.Item1}" Value="True">
+                                                                    <Setter Property="Background" Value="GreenYellow"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseC.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="3" Orientation="Horizontal">
+                                                    <TextBlock Text="d)" FontSize="12" Padding="2" Width="20" >
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding ResponseD.Item1}" Value="True">
+                                                                    <Setter Property="Background" Value="GreenYellow"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding ResponseD.Item2}" FontSize="12" Padding="2" MinWidth="100" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
+                                            <Button Content="Usuń" x:Name="buttonDeleteQuiz" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
+                                        </StackPanel>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <TextBox x:Name="filterQuiz" Height="23" TextWrapping="Wrap" TextChanged="FilterText_TextChanged" BorderBrush="#FF828790" VerticalAlignment="Top" />
+                    </Grid>
+                </TabItem>
             </TabControl.Items>
+            
         </TabControl>
     </DockPanel>
 </Window>

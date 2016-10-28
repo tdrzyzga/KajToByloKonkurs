@@ -26,13 +26,16 @@ namespace KajToBylo
 
         private Base myBase;
         private Collections collections;
+        private QuizCollection quizCollection;
                
         public MainWindow()
         {
             collections = new Collections();
+            quizCollection = new QuizCollection();
             InitializeComponent();
 
             tabControl.DataContext = collections;
+            listQuiz.ItemsSource = quizCollection.Quiz;
         }
 
         private void newBase_Click(object sender, RoutedEventArgs e)
@@ -149,8 +152,16 @@ namespace KajToBylo
             System.Windows.Controls.Button buttonDeleteQuestion = sender as System.Windows.Controls.Button;
             QuestionAnswers question = buttonDeleteQuestion.DataContext as QuestionAnswers;
 
-            collections.DeleteItem(checkCategory(buttonDeleteQuestion.Name), question);
-            myBase.DeleteQuestion(checkCategory(buttonDeleteQuestion.Name), question);
+            if (buttonDeleteQuestion.Name == "buttonDeleteQuiz")
+            {
+                quizCollection.DeleteItem(question);
+                listQuiz.Items.Refresh();
+            }
+            else
+            {
+                collections.DeleteItem(checkCategory(buttonDeleteQuestion.Name), question);
+                myBase.DeleteQuestion(checkCategory(buttonDeleteQuestion.Name), question);
+            }
         }
 
         private void buttonEditQuestion_Click(object sender, RoutedEventArgs e)
@@ -170,9 +181,18 @@ namespace KajToBylo
             editQuestion.Close();
         }
 
+        private void buttonAddToQuiz_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Button buttonAddToQuiz = sender as System.Windows.Controls.Button;
+            QuestionAnswers question = buttonAddToQuiz.DataContext as QuestionAnswers;
+
+            quizCollection.AddItemsToCollections(checkCategory(buttonAddToQuiz.Name), question);
+            listQuiz.Items.Refresh();
+        }
+
         private IndexCategory checkCategory(string button)
         {
-            if (button == "buttonDeleteMusicPL" || button == "buttonEditMusicPL")
+            if (button == "buttonDeleteMusicPL" || button == "buttonEditMusicPL" || button == "buttonAddToQuizMusicPL")
                 return IndexCategory.MusicPL;
             else if (button == "buttonDeleteMusicSL" || button == "buttonEditMusicSL")
                 return IndexCategory.MusicSL;
@@ -219,7 +239,12 @@ namespace KajToBylo
 
         private void FilterText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            collections.Refresh(sender as System.Windows.Controls.TextBox);
+            System.Windows.Controls.TextBox filter = sender as System.Windows.Controls.TextBox;
+            if (filter.Name == "filterQuiz")
+                quizCollection.Refresh(filter);
+            else
+                collections.Refresh(filter);
+            
         }
     }
 }
