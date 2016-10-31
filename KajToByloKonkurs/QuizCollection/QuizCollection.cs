@@ -24,7 +24,7 @@ namespace KajToBylo
             Quiz.Filter = questionSearch;
         }
 
-        public void AddItemsToCollections(MainWindow.IndexCategory indexCategory, QuestionAnswers question)
+        public void AddItemsToCollections(QuestionAnswers question)
         {
             dictinaryQuizCollection.Add(question);
         }
