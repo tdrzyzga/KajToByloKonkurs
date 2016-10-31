@@ -22,6 +22,10 @@ namespace KajToBylo
             Quiz = new CollectionView(dictinaryQuizCollection);
             Quiz= (CollectionView)CollectionViewSource.GetDefaultView(dictinaryQuizCollection);
             Quiz.Filter = questionSearch;
+
+            PropertyGroupDescription groupDescription = new PropertyGroupDescription("CategoryIndex");
+            Quiz.GroupDescriptions.Add(groupDescription);
+
         }
 
         public void AddItemsToCollections(QuestionAnswers question)
