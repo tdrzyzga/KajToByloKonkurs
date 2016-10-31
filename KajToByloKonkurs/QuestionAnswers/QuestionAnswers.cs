@@ -9,8 +9,6 @@ namespace KajToBylo
     [Serializable]
       public class QuestionAnswers
     {
-        public MainWindow.IndexCategory CategoryIndex { get; private set; }
-
         public string Question { get; private set; }
         public Tuple<bool, string> ResponseA { get; private set; }
         public Tuple<bool, string> ResponseB { get; private set; }
@@ -19,9 +17,8 @@ namespace KajToBylo
         public DateTime GeneratedData { get; private set; }
         public bool Used { get; set; }
 
-        public QuestionAnswers(MainWindow.IndexCategory indexCategory, string question, Tuple<bool, string> answerA, Tuple<bool, string> answerB, Tuple<bool, string> answerC, Tuple<bool, string> answerD, DateTime dateTime, bool used = false)
+        public QuestionAnswers(string question, Tuple<bool, string> answerA, Tuple<bool, string> answerB, Tuple<bool, string> answerC, Tuple<bool, string> answerD, DateTime dateTime, bool used = false)
         {
-            CategoryIndex = indexCategory;
             Question = question;
    
             ResponseA = answerA;
