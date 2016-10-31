@@ -266,7 +266,6 @@
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
-                                            <Button Content="Dodaj" x:Name="buttonAddToQuizMusicPL" ToolTip="Dodaj do zestawu konkursowego" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonAddToQuiz_Click"/>
                                             <Button Content="Edytuj" x:Name="buttonEditMusicSL" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click"/>
                                             <Button Content="Usuń" x:Name="buttonDeleteMusicSL" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
                                         </StackPanel>
@@ -385,7 +384,6 @@
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
-                                            <Button Content="Dodaj" x:Name="buttonAddToQuizMusicPL" ToolTip="Dodaj do zestawu konkursowego" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonAddToQuiz_Click"/>
                                             <Button Content="Edytuj" x:Name="buttonEditMovie" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click"/>
                                             <Button Content="Usuń" x:Name="buttonDeleteMovie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
                                         </StackPanel>
@@ -504,7 +502,6 @@
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
-                                            <Button Content="Dodaj" x:Name="buttonAddToQuizMusicPL" ToolTip="Dodaj do zestawu konkursowego" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonAddToQuiz_Click"/>
                                             <Button Content="Edytuj" x:Name="buttonEditBook" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click"/>
                                             <Button Content="Usuń" x:Name="buttonDeleteBook" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
                                         </StackPanel>
@@ -624,6 +621,17 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
+
+                            <ListView.GroupStyle>
+                                <GroupStyle>
+                                    <GroupStyle.HeaderTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding CategoryName}"/>
+                                        </DataTemplate>
+                                    </GroupStyle.HeaderTemplate>
+                                </GroupStyle>
+                            </ListView.GroupStyle>
+
                         </ListView>
                         <TextBox x:Name="filterQuiz" Height="23" TextWrapping="Wrap" TextChanged="FilterText_TextChanged" BorderBrush="#FF828790" VerticalAlignment="Top" />
                     </Grid>
