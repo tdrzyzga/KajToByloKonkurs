@@ -12,29 +12,36 @@ namespace KajToBylo
     {
         public CollectionView Quiz { get; private set; }
 
-        private ObservableCollection<QuestionAnswers> quizCollection;
+        private ObservableCollection<QuestionAnswers> dictinaryQuizCollection;
         private string filterText;
 
         public QuizCollection()
         {
-            quizCollection = new ObservableCollection<QuestionAnswers>();
+            dictinaryQuizCollection = new ObservableCollection<QuestionAnswers>();
 
-            Quiz = new CollectionView(quizCollection);
-            Quiz = (CollectionView)CollectionViewSource.GetDefaultView(quizCollection);
+            Quiz = new CollectionView(dictinaryQuizCollection);
+            Quiz= (CollectionView)CollectionViewSource.GetDefaultView(dictinaryQuizCollection);
             Quiz.Filter = questionSearch;
-
-            PropertyGroupDescription groupDescription = new PropertyGroupDescription("CategoryName");
-            Quiz.GroupDescriptions.Add(groupDescription);
         }
 
         public void AddItemsToCollections(QuestionAnswers question)
         {
-            quizCollection.Add(question);
+            dictinaryQuizCollection.Add(question);
         }
 
         public void DeleteItem(QuestionAnswers question)
         {
-            quizCollection.Remove(question);
+            dictinaryQuizCollection.Remove(question);
+           /* foreach (var i in dictinaryQuizCollection)
+            {
+              
+                if (i.Value.Exists(x=> x == question))
+                {
+                    i.Value.Remove(question);
+                    break;
+                }
+            }*/
+
         }
 
         public void Refresh(TextBox texBox)

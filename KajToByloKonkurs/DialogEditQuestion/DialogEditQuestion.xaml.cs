@@ -16,7 +16,7 @@ namespace KajToBylo
     /// <summary>
     /// Interaction logic for DialogEditQuestion.xaml
     /// </summary>
-        public partial class DialogEditQuestion : Window
+    public partial class DialogEditQuestion : Window
     {
         public bool DialogEditQuestionResult { get; private set; }
         public QuestionAnswers Question { get; private set; }

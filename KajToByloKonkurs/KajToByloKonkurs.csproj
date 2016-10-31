@@ -86,6 +86,7 @@
     <Compile Include="OrdinalConverter\OrdinalConverter.cs" />
     <Compile Include="QuestionAnswers\QuestionAnswers.cs" />
     <Compile Include="QuestionComparer\QuestionComparer.cs" />
+    <Compile Include="QuizCollection\QuizCollection.cs" />
     <Page Include="DialogEditQuestion\DialogEditQuestion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
