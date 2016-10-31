@@ -31,19 +31,19 @@ namespace KajToBylo
             return dictinaryCategory[key];
         }
 
-        public void SetCategory(QuestionAnswers question)
+        public void SetCategory(KajToBylo.MainWindow.IndexCategory key, QuestionAnswers question)
         {
-            dictinaryCategory[question.CategoryIndex].AddQuestion(question);
+            dictinaryCategory[key].AddQuestion(question);
         }
 
-        public void DeleteQuestion(QuestionAnswers question)
+        public void DeleteQuestion(KajToBylo.MainWindow.IndexCategory key, QuestionAnswers question)
         {
-            dictinaryCategory[question.CategoryIndex].DeleteQuestion(question);
+            dictinaryCategory[key].DeleteQuestion(question);
         }
 
-        public void ChangeQuestion(QuestionAnswers questionBeforeChanges, QuestionAnswers questionAfterChanges)
+        public void ChangeQuestion(KajToBylo.MainWindow.IndexCategory key, QuestionAnswers questionBeforeChanges, QuestionAnswers questionAfterChanges)
         {
-            dictinaryCategory[questionBeforeChanges.CategoryIndex].ChangeQuestion(questionBeforeChanges, questionAfterChanges);
+            dictinaryCategory[key].ChangeQuestion(questionBeforeChanges, questionAfterChanges);
         }
         
         public void WriteAll()
