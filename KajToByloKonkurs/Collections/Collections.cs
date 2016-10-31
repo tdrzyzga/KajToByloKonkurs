@@ -79,9 +79,9 @@ namespace KajToBylo
             }
         }
 
-        public void AddItemsToCollections(QuestionAnswers question)
+        public void AddItemsToCollections(MainWindow.IndexCategory indexCategory, QuestionAnswers question)
         {
-            var collection = setCategory(question.CategoryIndex);
+            var collection = setCategory(indexCategory);
             collection.Insert(0, question);
         }
 
@@ -92,15 +92,15 @@ namespace KajToBylo
                 collection.Add(i);
         }
 
-        public void DeleteItem(QuestionAnswers question)
+        public void DeleteItem(MainWindow.IndexCategory indexCategory, QuestionAnswers question)
         {
-            var collection = setCategory(question.CategoryIndex);
+            var collection = setCategory(indexCategory);
             collection.Remove(question);
         }
 
-        public void ChangeItem(QuestionAnswers questionBeforeChanges, QuestionAnswers questionAfterChanges)
+        public void ChangeItem(MainWindow.IndexCategory indexCategory, QuestionAnswers questionBeforeChanges, QuestionAnswers questionAfterChanges)
         {
-            var collection = setCategory(questionBeforeChanges.CategoryIndex);
+            var collection = setCategory(indexCategory);
             collection[collection.IndexOf(questionBeforeChanges)] = questionAfterChanges;
         }
 

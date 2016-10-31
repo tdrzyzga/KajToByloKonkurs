@@ -27,7 +27,7 @@ namespace KajToBylo
             Quiz.GroupDescriptions.Add(groupDescription);
         }
 
-        public void AddItemsToCollections(QuestionAnswers question)
+        public void AddItemsToCollections(MainWindow.IndexCategory indexCategory, QuestionAnswers question)
         {
             quizCollection.Add(question);
         }
