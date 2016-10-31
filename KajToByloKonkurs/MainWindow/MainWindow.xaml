@@ -621,17 +621,6 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-
-                            <ListView.GroupStyle>
-                                <GroupStyle>
-                                    <GroupStyle.HeaderTemplate>
-                                        <DataTemplate>
-                                            <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding CategoryName}"/>
-                                        </DataTemplate>
-                                    </GroupStyle.HeaderTemplate>
-                                </GroupStyle>
-                            </ListView.GroupStyle>
-
                         </ListView>
                         <TextBox x:Name="filterQuiz" Height="23" TextWrapping="Wrap" TextChanged="FilterText_TextChanged" BorderBrush="#FF828790" VerticalAlignment="Top" />
                     </Grid>
