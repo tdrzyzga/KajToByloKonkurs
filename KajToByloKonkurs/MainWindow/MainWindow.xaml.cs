@@ -63,8 +63,8 @@ namespace KajToBylo
 
             if (newQuestion.DialogNewQuestionResult)
             {
-                myBase.SetCategory(newQuestion.Question);
-                collections.AddItemsToCollections(newQuestion.Question);
+                myBase.SetCategory(newQuestion.Category, newQuestion.Question);
+                collections.AddItemsToCollections(newQuestion.Category, newQuestion.Question);
 
                 refreshListsView(newQuestion.Category);
 
@@ -159,8 +159,8 @@ namespace KajToBylo
             }
             else
             {
-                collections.DeleteItem(question);
-                myBase.DeleteQuestion(question);
+                collections.DeleteItem(checkCategory(buttonDeleteQuestion.Name), question);
+                myBase.DeleteQuestion(checkCategory(buttonDeleteQuestion.Name), question);
             }
         }
 
@@ -169,13 +169,13 @@ namespace KajToBylo
             System.Windows.Controls.Button buttonEditQuestion = sender as System.Windows.Controls.Button;
             QuestionAnswers question = buttonEditQuestion.DataContext as QuestionAnswers;
 
-            DialogEditQuestion editQuestion = new DialogEditQuestion(question);
+            DialogEditQuestion editQuestion = new DialogEditQuestion(checkCategory(buttonEditQuestion.Name), question);
             editQuestion.ShowDialog();
 
             if (editQuestion.DialogEditQuestionResult)
             {
-                collections.ChangeItem(question, editQuestion.Question);
-                myBase.ChangeQuestion(question, editQuestion.Question);
+                collections.ChangeItem(checkCategory(buttonEditQuestion.Name),question, editQuestion.Question);
+                myBase.ChangeQuestion(checkCategory(buttonEditQuestion.Name), question, editQuestion.Question);
             }
 
             editQuestion.Close();
@@ -186,11 +186,11 @@ namespace KajToBylo
             System.Windows.Controls.Button buttonAddToQuiz = sender as System.Windows.Controls.Button;
             QuestionAnswers question = buttonAddToQuiz.DataContext as QuestionAnswers;
 
-            quizCollection.AddItemsToCollections(question);
+            quizCollection.AddItemsToCollections(checkCategory(buttonAddToQuiz.Name), question);
             listQuiz.Items.Refresh();
         }
 
-        /*private IndexCategory checkCategory(string button)
+        private IndexCategory checkCategory(string button)
         {
             if (button == "buttonDeleteMusicPL" || button == "buttonEditMusicPL" || button == "buttonAddToQuizMusicPL")
                 return IndexCategory.MusicPL;
@@ -200,7 +200,7 @@ namespace KajToBylo
                 return IndexCategory.Movie;
             else
                 return IndexCategory.Book;
-        }*/
+        }
 
         private void refreshListsView(IndexCategory indexCategory)
         {
