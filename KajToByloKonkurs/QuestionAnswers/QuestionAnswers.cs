@@ -10,7 +10,6 @@ namespace KajToBylo
       public class QuestionAnswers
     {
         public MainWindow.IndexCategory CategoryIndex { get; private set; }
-        public string CategoryName { get; private set; }
 
         public string Question { get; private set; }
         public Tuple<bool, string> ResponseA { get; private set; }
@@ -23,7 +22,6 @@ namespace KajToBylo
         public QuestionAnswers(MainWindow.IndexCategory indexCategory, string question, Tuple<bool, string> answerA, Tuple<bool, string> answerB, Tuple<bool, string> answerC, Tuple<bool, string> answerD, DateTime dateTime, bool used = false)
         {
             CategoryIndex = indexCategory;
-            CategoryName = MainWindow.NameCategory[(int)CategoryIndex];
             Question = question;
    
             ResponseA = answerA;
