@@ -30,10 +30,9 @@ namespace KajToBylo
         private void dialogNewQuestionSave_Click(object sender, RoutedEventArgs e)
         {
             DialogNewQuestionResult = true;
-            Category = CheckCategory();
 
-            Question = new QuestionAnswers(Category, newQuestion.Text, (Tuple.Create((bool)dialogNewQuestionA.IsChecked, dialogNewQuestionAnswerA.Text)), (Tuple.Create((bool)dialogNewQuestionB.IsChecked, dialogNewQuestionAnswerB.Text)), (Tuple.Create((bool)dialogNewQuestionC.IsChecked, dialogNewQuestionAnswerC.Text)), (Tuple.Create((bool)dialogNewQuestionD.IsChecked, dialogNewQuestionAnswerD.Text)), DateTime.Now);
-            
+            Question = new QuestionAnswers(newQuestion.Text, (Tuple.Create((bool)dialogNewQuestionA.IsChecked, dialogNewQuestionAnswerA.Text)), (Tuple.Create((bool)dialogNewQuestionB.IsChecked, dialogNewQuestionAnswerB.Text)), (Tuple.Create((bool)dialogNewQuestionC.IsChecked, dialogNewQuestionAnswerC.Text)), (Tuple.Create((bool)dialogNewQuestionD.IsChecked, dialogNewQuestionAnswerD.Text)), DateTime.Now);
+            Category = CheckCategory();
 
             this.Hide();
         }
