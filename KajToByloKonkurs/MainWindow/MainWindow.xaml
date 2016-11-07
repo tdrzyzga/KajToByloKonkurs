@@ -595,13 +595,6 @@
                                     </Style.Triggers>
                                     <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" />
                                     <Setter Property="BorderThickness" Value="0,0,0,1" />
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="ListBoxItem">
-                                                <ContentPresenter/>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
                                 </Style>
                             </ListView.ItemContainerStyle>
                             <ListView.ItemTemplate>
@@ -629,59 +622,55 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                                    <TextBlock Text="a)" FontSize="12" Padding="2" Width="20">
-                                                    <TextBlock.Style>
-                                                        <Style TargetType="TextBlock">
+                                                    <StackPanel.Style>
+                                                        <Style TargetType="StackPanel">
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding ResponseA.Item1}" Value="True">
-                                                                    <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
+                                                                    <Setter Property="TextBlock.FontWeight" Value="Bold"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
-                                                    </TextBlock.Style>
-                                                    </TextBlock>
+                                                    </StackPanel.Style>
+                                                    <TextBlock Text="a)" FontSize="12" Padding="2" Width="20"/>
                                                     <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
                                                 </StackPanel>
                                                 <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                                    <TextBlock Text="b)" FontSize="12" Padding="2" Width="20">
-                                                    <TextBlock.Style>
-                                                        <Style TargetType="TextBlock">
+                                                    <StackPanel.Style>
+                                                        <Style TargetType="StackPanel">
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding ResponseB.Item1}" Value="True">
-                                                                    <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
+                                                                    <Setter Property="TextBlock.FontWeight" Value="Bold"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
-                                                    </TextBlock.Style>
-                                                    </TextBlock>
+                                                    </StackPanel.Style>
+                                                    <TextBlock Text="b)" FontSize="12" Padding="2" Width="20"/>
                                                     <TextBlock Text="{Binding ResponseB.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
                                                 </StackPanel>
                                                 <StackPanel Grid.Column="2" Orientation="Horizontal">
-                                                    <TextBlock Text="c)" FontSize="12" Padding="2" Width="20" >
-                                                    <TextBlock.Style>
-                                                        <Style TargetType="TextBlock">
+                                                    <StackPanel.Style>
+                                                        <Style TargetType="StackPanel">
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding ResponseC.Item1}" Value="True">
-                                                                    <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
+                                                                    <Setter Property="TextBlock.FontWeight" Value="Bold"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
-                                                    </TextBlock.Style>
-                                                    </TextBlock>
+                                                    </StackPanel.Style>
+                                                    <TextBlock Text="c)" FontSize="12" Padding="2" Width="20" />
                                                     <TextBlock Text="{Binding ResponseC.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
                                                 </StackPanel>
                                                 <StackPanel Grid.Column="3" Orientation="Horizontal">
-                                                    <TextBlock Text="d)" FontSize="12" Padding="2" Width="20" >
-                                                    <TextBlock.Style>
-                                                        <Style TargetType="TextBlock">
+                                                    <StackPanel.Style>
+                                                        <Style TargetType="StackPanel">
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding ResponseD.Item1}" Value="True">
-                                                                    <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
+                                                                    <Setter Property="TextBlock.FontWeight" Value="Bold"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
-                                                    </TextBlock.Style>
-                                                    </TextBlock>
+                                                    </StackPanel.Style>
+                                                    <TextBlock Text="d)" FontSize="12" Padding="2" Width="20"/>
                                                     <TextBlock Text="{Binding ResponseD.Item2}" FontSize="12" Padding="2" MinWidth="100" />
                                                 </StackPanel>
                                             </Grid>
