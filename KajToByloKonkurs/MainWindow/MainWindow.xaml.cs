@@ -184,7 +184,7 @@ namespace KajToBylo
         private void buttonAddToQuiz_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Controls.Button buttonAddToQuiz = sender as System.Windows.Controls.Button;
-            QuestionAnswers question = buttonAddToQuiz.DataContext as QuestionAnswers;
+            QuestionAnswers question = buttonAddToQuiz.DataContext as QuestionAnswers;            
 
             quizCollection.AddItemsToCollections(question);
             listQuiz.Items.Refresh();
