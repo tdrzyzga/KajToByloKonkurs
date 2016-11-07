@@ -17,8 +17,10 @@ namespace KajToBylo
         public Tuple<bool, string> ResponseB { get; private set; }
         public Tuple<bool, string> ResponseC { get; private set; }
         public Tuple<bool, string> ResponseD { get; private set; }
+
         public DateTime GeneratedData { get; private set; }
         public bool Used { get; set; }
+        public bool AddedToQuizCollection { get; set; }
 
         public QuestionAnswers(MainWindow.IndexCategory indexCategory, string question, Tuple<bool, string> answerA, Tuple<bool, string> answerB, Tuple<bool, string> answerC, Tuple<bool, string> answerD, DateTime dateTime, bool used = false)
         {
@@ -33,6 +35,7 @@ namespace KajToBylo
 
             GeneratedData = dateTime;
             Used = used;
+            AddedToQuizCollection = false;
         }
     }
 }

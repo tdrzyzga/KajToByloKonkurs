@@ -43,6 +43,11 @@ namespace KajToBylo
             Quiz.Refresh();
         }
 
+        public void Clear()
+        {
+            quizCollection.Clear();
+        }
+
         private bool questionSearch(object item)
         {
             QuestionAnswers question = item as QuestionAnswers;
@@ -52,6 +57,8 @@ namespace KajToBylo
             else
                 return false;
         }
+
+
 
 
 

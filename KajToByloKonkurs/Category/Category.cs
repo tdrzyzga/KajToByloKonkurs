@@ -46,6 +46,12 @@ namespace KajToBylo
         {
             listQuestionAnswers[listQuestionAnswers.IndexOf(questionBeforeChanges)] = questionAfterChanges;
         }
+
+        public void ResetAddedToQuiz()
+        {
+            foreach (var question in listQuestionAnswers)
+                question.AddedToQuizCollection = false;
+        }
         
     }
 }
