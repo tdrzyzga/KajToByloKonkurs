@@ -88,7 +88,15 @@ namespace KajToBylo
                     break;
                 }
             }
+
+            resetAddedToQuiz();
             return result;
+        }
+
+        private void resetAddedToQuiz()
+        {
+            foreach (var category in dictinaryCategory)
+                category.Value.ResetAddedToQuiz();
         }
     }
 }

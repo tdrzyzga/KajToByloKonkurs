@@ -103,10 +103,13 @@ namespace KajToBylo
             {
                 myBase.WriteAll();
                 collections.Clear();
-
+                quizCollection.Clear();
             }
             else
+            {
                 collections.Clear();
+                quizCollection.Clear();
+            }
 
             saveBase.Close();
         }
@@ -137,14 +140,16 @@ namespace KajToBylo
 
         private void getSelectedItem(object sender, MouseButtonEventArgs e)
         {
-            System.Windows.Controls.ListView listView = sender as System.Windows.Controls.ListView;
+            //System.Windows.Controls.ListView listView = sender as System.Windows.Controls.ListView;
 
-            QuestionAnswers question = (QuestionAnswers)listView.SelectedItems[0];
+            QuestionAnswers question = (QuestionAnswers)listQuiz.SelectedItems[0];
             if (question.Used == true)
                 question.Used = false;
             else
                 question.Used = true;
-            listView.Items.Refresh();
+            
+            refreshListsView(question.CategoryIndex);
+            listQuiz.Items.Refresh();
         }
 
         private void buttonDeleteQuestion_Click(object sender, RoutedEventArgs e)
@@ -187,6 +192,8 @@ namespace KajToBylo
             QuestionAnswers question = buttonAddToQuiz.DataContext as QuestionAnswers;            
 
             quizCollection.AddItemsToCollections(question);
+            question.AddedToQuizCollection = true;
+            refreshListsView(question.CategoryIndex);
             listQuiz.Items.Refresh();
         }
 
