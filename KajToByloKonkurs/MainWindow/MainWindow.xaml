@@ -59,7 +59,7 @@
                                     <Setter Property="Focusable" Value="false"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Used}" Value="True">
-                                            <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                                            <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -189,7 +189,7 @@
                                     <Setter Property="Focusable" Value="false"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Used}" Value="True">
-                                            <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                                            <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -319,7 +319,7 @@
                                     <Setter Property="Focusable" Value="false"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Used}" Value="True">
-                                            <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                                            <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -449,7 +449,7 @@
                                     <Setter Property="Focusable" Value="false"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Used}" Value="True">
-                                            <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                                            <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -570,13 +570,13 @@
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListViewItem}">
                                     <Style.Resources>
-                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#00000000"/>
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
                                         <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#00000000"/>
                                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
                                     </Style.Resources>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Used}" Value="True">
-                                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
                                         </DataTrigger>
                                         <Trigger Property="IsSelected" Value="True">
                                             <Setter Property="BorderThickness" Value="2"/>
