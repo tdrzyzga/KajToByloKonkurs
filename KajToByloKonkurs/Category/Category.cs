@@ -37,7 +37,7 @@ namespace KajToBylo
             listQuestionAnswers.Sort(questionComparer);
         }
 
-        public void DeleteQuestion(QuestionAnswers question)
+        public void RemoveQuestion(QuestionAnswers question)
         {
             listQuestionAnswers.Remove(question);
         }

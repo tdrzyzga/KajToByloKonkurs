@@ -79,20 +79,20 @@ namespace KajToBylo
             }
         }
 
-        public void AddItemsToCollections(QuestionAnswers question)
+        public void AddItem(QuestionAnswers question)
         {
             var collection = setCategory(question.CategoryIndex);
             collection.Insert(0, question);
         }
 
-        public void SetCollections(MainWindow.IndexCategory indexCategory, Category category)
+        public void SetCollection(MainWindow.IndexCategory indexCategory, Category category)
         {
             var collection = setCategory(indexCategory);
             foreach (var i in category.ReturnListQuestions())
                 collection.Add(i);
         }
 
-        public void DeleteItem(QuestionAnswers question)
+        public void RemoveItem(QuestionAnswers question)
         {
             var collection = setCategory(question.CategoryIndex);
             collection.Remove(question);

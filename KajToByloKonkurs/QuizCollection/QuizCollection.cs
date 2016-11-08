@@ -27,12 +27,12 @@ namespace KajToBylo
             Quiz.GroupDescriptions.Add(groupDescription);
         }
 
-        public void AddItemsToCollections(QuestionAnswers question)
+        public void AddItem(QuestionAnswers question)
         {
             quizCollection.Add(question);
         }
 
-        public void DeleteItem(QuestionAnswers question)
+        public void RemoveItem(QuestionAnswers question)
         {
             quizCollection.Remove(question);
         }
@@ -41,6 +41,14 @@ namespace KajToBylo
         {
             filterText = texBox.Text;
             Quiz.Refresh();
+        }
+
+        public void RefreshSingleItem(QuestionAnswers question)
+        {
+            int index = Quiz.IndexOf(question);
+
+            quizCollection.Remove(question);
+            quizCollection.Insert(index, question);
         }
 
         public void Clear()

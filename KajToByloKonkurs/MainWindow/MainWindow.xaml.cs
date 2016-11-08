@@ -64,7 +64,7 @@ namespace KajToBylo
             if (newQuestion.DialogNewQuestionResult)
             {
                 myBase.SetCategory(newQuestion.Question);
-                collections.AddItemsToCollections(newQuestion.Question);
+                collections.AddItem(newQuestion.Question);
 
                 refreshListsView(newQuestion.Category);
 
@@ -123,7 +123,7 @@ namespace KajToBylo
         {
             for (int i = 0; i < NameCategory.Count(); i++)
             {
-                collections.SetCollections((IndexCategory)i, myBase.GetCategory((IndexCategory)i));
+                collections.SetCollection((IndexCategory)i, myBase.GetCategory((IndexCategory)i));
             }
         }
 
@@ -137,21 +137,6 @@ namespace KajToBylo
             menuDeleteQuestion.IsEnabled = true;
         }
 
-
-        private void getSelectedItem(object sender, MouseButtonEventArgs e)
-        {
-            //System.Windows.Controls.ListView listView = sender as System.Windows.Controls.ListView;
-
-            QuestionAnswers question = (QuestionAnswers)listQuiz.SelectedItems[0];
-            if (question.Used == true)
-                question.Used = false;
-            else
-                question.Used = true;
-            
-            refreshListsView(question.CategoryIndex);
-            listQuiz.Items.Refresh();
-        }
-
         private void buttonDeleteQuestion_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Controls.Button buttonDeleteQuestion = sender as System.Windows.Controls.Button;
@@ -159,13 +144,13 @@ namespace KajToBylo
 
             if (buttonDeleteQuestion.Name == "buttonDeleteQuiz")
             {
-                quizCollection.DeleteItem(question);
+                quizCollection.RemoveItem(question);
                 listQuiz.Items.Refresh();
             }
             else
             {
-                collections.DeleteItem(question);
-                myBase.DeleteQuestion(question);
+                collections.RemoveItem(question);
+                myBase.RemoveQuestion(question);
             }
         }
 
@@ -189,12 +174,26 @@ namespace KajToBylo
         private void buttonAddToQuiz_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Controls.Button buttonAddToQuiz = sender as System.Windows.Controls.Button;
-            QuestionAnswers question = buttonAddToQuiz.DataContext as QuestionAnswers;            
+            QuestionAnswers question = buttonAddToQuiz.DataContext as QuestionAnswers;
 
-            quizCollection.AddItemsToCollections(question);
+            quizCollection.AddItem(question);
             question.AddedToQuizCollection = true;
             refreshListsView(question.CategoryIndex);
             listQuiz.Items.Refresh();
+        }
+
+        private void buttonUsedQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Button buttonUsedQuestion = sender as System.Windows.Controls.Button;
+            QuestionAnswers question = buttonUsedQuestion.DataContext as QuestionAnswers;
+
+            if (question.Used == true)
+                question.Used = false;
+            else
+                question.Used = true;
+
+            refreshListsView(question.CategoryIndex);
+            quizCollection.RefreshSingleItem(question);
         }
 
         /*private IndexCategory checkCategory(string button)
@@ -253,6 +252,8 @@ namespace KajToBylo
                 collections.Refresh(filter);
             
         }
+
+
     }
 }
 

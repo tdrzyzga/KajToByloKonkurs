@@ -36,9 +36,9 @@ namespace KajToBylo
             dictinaryCategory[question.CategoryIndex].AddQuestion(question);
         }
 
-        public void DeleteQuestion(QuestionAnswers question)
+        public void RemoveQuestion(QuestionAnswers question)
         {
-            dictinaryCategory[question.CategoryIndex].DeleteQuestion(question);
+            dictinaryCategory[question.CategoryIndex].RemoveQuestion(question);
         }
 
         public void ChangeQuestion(QuestionAnswers questionBeforeChanges, QuestionAnswers questionAfterChanges)
