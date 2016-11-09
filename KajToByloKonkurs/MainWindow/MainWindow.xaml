@@ -565,7 +565,7 @@
 
                         <ListView x:Name="listQuiz" FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectedIndex="1" Margin="0,28,0,0">
                             <ListView.Resources>
-                                <local:OrdinalConverter x:Key="OrdinalConverter" />
+                                <local:RowNumberInGroupConverter x:Key="RowNumberInGroupConverter" />
                             </ListView.Resources>
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListViewItem}">
@@ -596,9 +596,15 @@
                                             <ColumnDefinition Width="120*"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel   Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Converter={StaticResource ResourceKey=OrdinalConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <TextBlock.Text>
+                                                    <MultiBinding Converter="{StaticResource ResourceKey=RowNumberInGroupConverter}">
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}"/>
+                                                        <Binding RelativeSource="{RelativeSource Self}"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock> 
                                         </StackPanel>
-
                                         <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="{Binding Question}"/>
