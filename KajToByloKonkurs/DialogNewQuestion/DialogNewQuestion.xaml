@@ -44,7 +44,7 @@
             </StackPanel>
             <StackPanel Height="27" Orientation="Horizontal" Margin="268,3,0,5" HorizontalAlignment="Right">
                 <StackPanel Width="120">
-                    <Button x:Name="dialogNewQuestionSave" Content="Zapisz" Margin="0,3,10,3" Padding="0" Click="dialogNewQuestionSave_Click"/>
+                    <Button x:Name="dialogNewQuestionSave" Content="Zapisz" Margin="0,3,10,3" Padding="0" Click="dialogNewQuestionSave_Click" IsDefault="True"/>
                 </StackPanel>
                 <StackPanel Width="120">
                     <Button x:Name="dialogNewQuestionCancel" Content="Anuluj" Margin="0,3,10,3" Padding="0" Click="dialogNewQuestionCancel_Click"/>
