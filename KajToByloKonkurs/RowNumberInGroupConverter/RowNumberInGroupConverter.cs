@@ -4,25 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Windows.Data;
 using System.Windows.Controls;
+using System.ComponentModel;
 
 namespace KajToBylo
 {
     class RowNumberInGroupConverter : IMultiValueConverter
     {
-        public static int indexMusicPL = 0;
-        public static int indexMusicSL = 0;
-        public static int indexMovie = 0;
-        public static int indexBook = 0;
 
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-
+            int ordinal = 0;
             ListViewItem item = values[0] as ListViewItem;
             
-            
+
+            ListView group = values[1] as ListView;
+
+            ordinal = group.ItemContainerGenerator.IndexFromContainer(item)+1;
 
             
-            int ordinal = 0;
+
             //ordinal = groupItems.FindName(item.Name);
 
           /*if (groupName == MainWindow.NameCategory[(int)MainWindow.IndexCategory.MusicPL])

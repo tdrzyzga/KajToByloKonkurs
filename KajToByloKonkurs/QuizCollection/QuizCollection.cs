@@ -5,12 +5,13 @@ using System.Text;
 using System.Windows.Data;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using System.ComponentModel;
 
 namespace KajToBylo
 {
     class QuizCollection
     {
-        public CollectionView Quiz { get; private set; }
+        public ICollectionView Quiz { get; private set; }
 
         private ObservableCollection<QuestionAnswers> quizCollection;
         private string filterText;
@@ -19,8 +20,8 @@ namespace KajToBylo
         {
             quizCollection = new ObservableCollection<QuestionAnswers>();
 
-            Quiz = new CollectionView(quizCollection);
-            Quiz = (CollectionView)CollectionViewSource.GetDefaultView(quizCollection);
+
+            Quiz = CollectionViewSource.GetDefaultView(quizCollection);
             Quiz.Filter = questionSearch;
 
             PropertyGroupDescription groupDescription = new PropertyGroupDescription("CategoryName");
@@ -65,11 +66,13 @@ namespace KajToBylo
             else
                 return false;
         }
-
-
-
-
-
-
     }
 }
+
+
+
+
+
+
+
+

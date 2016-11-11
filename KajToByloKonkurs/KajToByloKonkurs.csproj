@@ -87,6 +87,7 @@
     <Compile Include="QuestionAnswers\QuestionAnswers.cs" />
     <Compile Include="QuestionComparer\QuestionComparer.cs" />
     <Compile Include="QuizCollection\QuizCollection.cs" />
+    <Compile Include="RowNumberInGroupConverter\RowNumberInGroupConverter.cs" />
     <Page Include="DialogEditQuestion\DialogEditQuestion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

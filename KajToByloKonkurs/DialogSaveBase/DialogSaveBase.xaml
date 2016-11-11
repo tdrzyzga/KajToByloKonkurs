@@ -11,7 +11,7 @@
             <TextBlock x:Name="textBlock1" Text="Zapisać bazę?" TextAlignment="Center" Padding="2" Margin="0,16" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" />
         </StackPanel>
         <StackPanel Height="38" Name="stackPanel3" Width="174" Orientation="Horizontal" FlowDirection="LeftToRight" HorizontalAlignment="Right">
-            <Button Content="Ok" Height="23" Name="dialogSaveBaseOk" Width="75" Margin="3" VerticalContentAlignment="Top" Click="dialogSaveBaseOk_Click" />
+            <Button Content="Ok" Height="23" Name="dialogSaveBaseOk" Width="75" Margin="3" VerticalContentAlignment="Top" Click="dialogSaveBaseOk_Click" IsDefault="True" />
             <Button Content="Anuluj" Height="23" Name="dialogSaveBaseCancel" Width="75" Margin="3" VerticalContentAlignment="Top" Click="dialogSaveBaseCancel_Click"/>
         </StackPanel>
     </StackPanel>

@@ -563,9 +563,9 @@
                 <TabItem Header="Konkurs">
                     <Grid ShowGridLines="True">
 
-                        <ListView x:Name="listQuiz" FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectedIndex="1" Margin="0,28,0,0">
+                        <ListView x:Name="listQuiz" FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectedIndex="-1" Margin="0,28,0,0">
                             <ListView.Resources>
-                                <local:RowNumberInGroupConverter x:Key="RowNumberInGroupConverter" />
+                                <local:OrdinalConverter x:Key="OrdinalConverter" />
                             </ListView.Resources>
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListViewItem}">
@@ -596,14 +596,7 @@
                                             <ColumnDefinition Width="120*"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel   Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <TextBlock.Text>
-                                                    <MultiBinding Converter="{StaticResource ResourceKey=RowNumberInGroupConverter}">
-                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}"/>
-                                                        <Binding RelativeSource="{RelativeSource Self}"/>
-                                                    </MultiBinding>
-                                                </TextBlock.Text>
-                                            </TextBlock> 
+                                            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Converter={StaticResource ResourceKey=OrdinalConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </StackPanel>
                                         <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
                                             <StackPanel Orientation="Horizontal">
@@ -728,6 +721,7 @@
                             </ListView.GroupStyle>
 
                         </ListView>
+
                         <TextBox x:Name="filterQuiz" Height="23" TextWrapping="Wrap" TextChanged="FilterText_TextChanged" BorderBrush="#FF828790" VerticalAlignment="Top" />
                     </Grid>
                 </TabItem>
