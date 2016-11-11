@@ -575,7 +575,7 @@
                                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
                                     </Style.Resources>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Used}" Value="True">
+                                        <DataTrigger Binding="{Binding Questin.Used}" Value="True">
                                             <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
                                         </DataTrigger>
                                         <Trigger Property="IsSelected" Value="True">
@@ -596,11 +596,11 @@
                                             <ColumnDefinition Width="120*"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel   Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Converter={StaticResource ResourceKey=OrdinalConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="{Binding Index}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </StackPanel>
                                         <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding Question}"/>
+                                                <TextBlock Text="{Binding Question.Question}"/>
                                             </StackPanel>
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
@@ -614,53 +614,53 @@
                                                     <StackPanel.Style>
                                                         <Style TargetType="StackPanel">
                                                             <Style.Triggers>
-                                                                <DataTrigger Binding="{Binding ResponseA.Item1}" Value="True">
+                                                                <DataTrigger Binding="{Binding Question.ResponseA.Item1}" Value="True">
                                                                     <Setter Property="TextBlock.FontWeight" Value="UltraBold"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
                                                     </StackPanel.Style>
                                                     <TextBlock Text="a)" FontSize="12" Padding="2" Width="20"/>
-                                                    <TextBlock Text="{Binding ResponseA.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                    <TextBlock Text="{Binding Question.ResponseA.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
                                                 </StackPanel>
                                                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                                                     <StackPanel.Style>
                                                         <Style TargetType="StackPanel">
                                                             <Style.Triggers>
-                                                                <DataTrigger Binding="{Binding ResponseB.Item1}" Value="True">
+                                                                <DataTrigger Binding="{Binding Question.ResponseB.Item1}" Value="True">
                                                                     <Setter Property="TextBlock.FontWeight" Value="UltraBold"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
                                                     </StackPanel.Style>
                                                     <TextBlock Text="b)" FontSize="12" Padding="2" Width="20"/>
-                                                    <TextBlock Text="{Binding ResponseB.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                    <TextBlock Text="{Binding Question.ResponseB.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
                                                 </StackPanel>
                                                 <StackPanel Grid.Column="2" Orientation="Horizontal">
                                                     <StackPanel.Style>
                                                         <Style TargetType="StackPanel">
                                                             <Style.Triggers>
-                                                                <DataTrigger Binding="{Binding ResponseC.Item1}" Value="True">
+                                                                <DataTrigger Binding="{Binding Question.ResponseC.Item1}" Value="True">
                                                                     <Setter Property="TextBlock.FontWeight" Value="UltraBold"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
                                                     </StackPanel.Style>
                                                     <TextBlock Text="c)" FontSize="12" Padding="2" Width="20" />
-                                                    <TextBlock Text="{Binding ResponseC.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
+                                                    <TextBlock Text="{Binding Question.ResponseC.Item2}" FontSize="12" Padding="2" MinWidth="100"/>
                                                 </StackPanel>
                                                 <StackPanel Grid.Column="3" Orientation="Horizontal">
                                                     <StackPanel.Style>
                                                         <Style TargetType="StackPanel">
                                                             <Style.Triggers>
-                                                                <DataTrigger Binding="{Binding ResponseD.Item1}" Value="True">
+                                                                <DataTrigger Binding="{Binding Question.ResponseD.Item1}" Value="True">
                                                                     <Setter Property="TextBlock.FontWeight" Value="UltraBold"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
                                                     </StackPanel.Style>
                                                     <TextBlock Text="d)" FontSize="12" Padding="2" Width="20"/>
-                                                    <TextBlock Text="{Binding ResponseD.Item2}" FontSize="12" Padding="2" MinWidth="100" />
+                                                    <TextBlock Text="{Binding Question.ResponseD.Item2}" FontSize="12" Padding="2" MinWidth="100" />
                                                 </StackPanel>
                                             </Grid>
                                         </StackPanel>
@@ -670,7 +670,7 @@
                                                 <Button.Style>
                                                     <Style TargetType="Button">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Used}" Value="True">
+                                                            <DataTrigger Binding="{Binding Question.Used}" Value="True">
                                                                 <Setter Property="IsEnabled" Value="False"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
@@ -681,7 +681,7 @@
                                                 <Button.Style>
                                                     <Style TargetType="Button">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Used}" Value="True">
+                                                            <DataTrigger Binding="{Binding Question.Used}" Value="True">
                                                                 <Setter Property="IsEnabled" Value="False"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>

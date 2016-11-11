@@ -13,29 +13,37 @@ namespace KajToBylo
     {
         public ICollectionView Quiz { get; private set; }
 
-        private ObservableCollection<QuestionAnswers> quizCollection;
+        private ObservableCollection<QuizQuestionAnswers> quizCollection;
         private string filterText;
+        private int indexMusicPL;
+        private int indexMusicSL;
+        private int indexMovie;
+        private int indexBook;
 
         public QuizCollection()
         {
-            quizCollection = new ObservableCollection<QuestionAnswers>();
-
-
+            quizCollection = new ObservableCollection<QuizQuestionAnswers>();
+            
             Quiz = CollectionViewSource.GetDefaultView(quizCollection);
             Quiz.Filter = questionSearch;
 
-            PropertyGroupDescription groupDescription = new PropertyGroupDescription("CategoryName");
+            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Question.CategoryName");
             Quiz.GroupDescriptions.Add(groupDescription);
+
+            indexMusicPL = 0;
+            indexMusicSL = 0;
+            indexMovie = 0;
+            indexBook = 0;
         }
 
         public void AddItem(QuestionAnswers question)
         {
-            quizCollection.Add(question);
+            quizCollection.Add(new QuizQuestionAnswers(updateCountCategory(question),question));
         }
 
         public void RemoveItem(QuestionAnswers question)
         {
-            quizCollection.Remove(question);
+            //quizCollection.Remove(second.question);
         }
 
         public void Refresh(TextBox texBox)
@@ -46,10 +54,10 @@ namespace KajToBylo
 
         public void RefreshSingleItem(QuestionAnswers question)
         {
-            int index = quizCollection.IndexOf(question);
+           // int index = quizCollection.IndexOf(question);
 
-            quizCollection.Remove(question);
-            quizCollection.Insert(index, question);
+           // quizCollection.Remove(question);
+           // quizCollection.Insert(index, question);
         }
 
         public void Clear()
@@ -65,6 +73,31 @@ namespace KajToBylo
                 return true;
             else
                 return false;
+        }
+
+        private int updateCountCategory(QuestionAnswers question)
+        {
+            int index = 0;
+            switch (question.CategoryIndex)
+            {
+                case MainWindow.IndexCategory.MusicPL:
+                    indexMusicPL++;
+                    index = indexMusicPL;
+                    break;
+                case MainWindow.IndexCategory.MusicSL:
+                    indexMusicSL++;
+                    index = indexMusicSL;
+                    break;
+                case MainWindow.IndexCategory.Movie:
+                    indexMovie++;
+                    index = indexMovie;
+                    break;
+                case MainWindow.IndexCategory.Book:
+                    indexBook++;
+                    index = indexBook;
+                    break;
+            }
+            return index;
         }
     }
 }

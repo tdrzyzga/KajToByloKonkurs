@@ -7,7 +7,7 @@ using System.Text;
 namespace KajToBylo
 {
     [Serializable]
-      public class QuestionAnswers
+    public class QuestionAnswers
     {
         public MainWindow.IndexCategory CategoryIndex { get; private set; }
         public string CategoryName { get; private set; }
