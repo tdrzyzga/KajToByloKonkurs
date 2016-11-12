@@ -12,13 +12,13 @@ namespace KajToBylo
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
 
-            ListViewItem lvi = value as ListViewItem;
+            ListViewItem listViewItem = value as ListViewItem;
             int ordinal = 0;
 
-            if (lvi != null)
+            if (listViewItem != null)
             {
-                ListView lv = ItemsControl.ItemsControlFromItemContainer(lvi) as ListView;
-                ordinal = lv.ItemContainerGenerator.IndexFromContainer(lvi) + 1;
+                ListView listView = ItemsControl.ItemsControlFromItemContainer(listViewItem) as ListView;
+                ordinal = listView.ItemContainerGenerator.IndexFromContainer(listViewItem) + 1;
             }
 
             return ordinal;

@@ -203,18 +203,6 @@ namespace KajToBylo
             quizCollection.RefreshSingleItem(question);
         }
 
-        /*private IndexCategory checkCategory(string button)
-        {
-            if (button == "buttonDeleteMusicPL" || button == "buttonEditMusicPL" || button == "buttonAddToQuizMusicPL")
-                return IndexCategory.MusicPL;
-            else if (button == "buttonDeleteMusicSL" || button == "buttonEditMusicSL")
-                return IndexCategory.MusicSL;
-            else if (button == "buttonDeleteMovie" || button == "buttonEditMovie")
-                return IndexCategory.Movie;
-            else
-                return IndexCategory.Book;
-        }*/
-
         private void refreshListsView(IndexCategory indexCategory)
         {
             switch (indexCategory)
