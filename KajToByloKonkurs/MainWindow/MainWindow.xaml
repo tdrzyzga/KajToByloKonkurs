@@ -16,7 +16,8 @@
                 </MenuItem>
                 <MenuItem Header="Edycja">
                     <MenuItem Header="Dodaj pytanie" x:Name="menuAddQuestion" ToolTip="Dodaj pytanie do kategorii" Click="newQuestion_Click" IsEnabled="False"/>
-                    <MenuItem Header="Usuń pytanie" x:Name="menuDeleteQuestion" ToolTip="Usuń pytanie z kategorii" IsEnabled="False"/>
+                    <MenuItem Header="Utwórz PDF" x:Name="menuCreatePDF" ToolTip="Utwórz dokument PDF" IsEnabled="False"/>
+                    <MenuItem Header="Utwórz DOCX" x:Name="menuCreateDOCX" ToolTip="Utwórz dokument DOCX" IsEnabled="False"/>
                 </MenuItem>
             </Menu>
 
@@ -33,6 +34,12 @@
                 <Separator Height="27" Margin="0"/>
                 <Button x:Name="buttonNewQuestion" ToolTip="Dodaj nowe pytanie" Padding="1" VerticalAlignment="Stretch" Click="newQuestion_Click" IsEnabled="False">
                     <Image x:Name="image4" Stretch="Fill" Source="/Images/legend.png" StretchDirection="Both" />
+                </Button>
+                <Button x:Name="buttonCreatePDF" ToolTip="Utwórz dokument PDF" Padding="1" VerticalAlignment="Stretch" Click="createPDF_Click" IsEnabled="False">
+                    <Image x:Name="image5" Stretch="Fill" Source="/Images/pdf.png" StretchDirection="Both" />
+                </Button>
+                <Button x:Name="buttonCreateDOCX" ToolTip="Utwórz dokument DOCX" Padding="1" VerticalAlignment="Stretch" IsEnabled="False">
+                    <Image x:Name="image6" Stretch="Fill" Source="/Images/docx.png" StretchDirection="Both" />
                 </Button>
 
             </ToolBar>
@@ -600,7 +607,7 @@
                                             <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center">
                                                 <TextBlock.Text>
                                                     <MultiBinding Converter="{StaticResource RowNumberInGroupConverter}">
-                                                        
+
                                                         <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=GroupItem}" Path="Content.Items"/>
                                                         <Binding Path="."/>
                                                     </MultiBinding>

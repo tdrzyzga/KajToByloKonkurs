@@ -13,6 +13,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.Collections.ObjectModel;
+using System.Data.OleDb;
+using System.IO;
 
 namespace KajToBylo
 {
@@ -50,7 +52,7 @@ namespace KajToBylo
             {
                 myBase = new Base(newBase.NameBase);
 
-                enabledControls();
+                enableControls();
             }
 
             newBase.Close();
@@ -90,7 +92,7 @@ namespace KajToBylo
 
                 setCollections();
 
-                enabledControls();
+                enableControls();
             }
         }
 
@@ -127,14 +129,17 @@ namespace KajToBylo
             }
         }
 
-        private void enabledControls()
+        private void enableControls()
         {
             buttonSaveBase.IsEnabled = true;
             buttonNewQuestion.IsEnabled = true;
+            buttonCreatePDF.IsEnabled = true;
+            buttonCreateDOCX.IsEnabled = true;
 
             menuSaveBase.IsEnabled = true;
             menuAddQuestion.IsEnabled = true;
-            menuDeleteQuestion.IsEnabled = true;
+            menuCreatePDF.IsEnabled = true;
+            menuCreateDOCX.IsEnabled = true;
         }
 
         private void buttonDeleteQuestion_Click(object sender, RoutedEventArgs e)
@@ -146,6 +151,7 @@ namespace KajToBylo
             {
                 quizCollection.RemoveItem(question);
                 question.AddedToQuizCollection = false;
+                quizCollection.Quiz.Refresh();
                 refreshListsView(question.CategoryIndex);
             }
             else
@@ -254,7 +260,9 @@ namespace KajToBylo
             
         }
 
-
+        private void createPDF_Click(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
 
