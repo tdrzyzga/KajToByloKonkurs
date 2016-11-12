@@ -13,37 +13,28 @@ namespace KajToBylo
     {
         public ICollectionView Quiz { get; private set; }
 
-        private ObservableCollection<QuizQuestionAnswers> quizCollection;
+        private ObservableCollection<QuestionAnswers> quizCollection;
         private string filterText;
-        private int indexMusicPL;
-        private int indexMusicSL;
-        private int indexMovie;
-        private int indexBook;
 
         public QuizCollection()
         {
-            quizCollection = new ObservableCollection<QuizQuestionAnswers>();
+            quizCollection = new ObservableCollection<QuestionAnswers>();
             
             Quiz = CollectionViewSource.GetDefaultView(quizCollection);
             Quiz.Filter = questionSearch;
 
-            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Question.CategoryName");
+            PropertyGroupDescription groupDescription = new PropertyGroupDescription("CategoryName");
             Quiz.GroupDescriptions.Add(groupDescription);
-
-            indexMusicPL = 0;
-            indexMusicSL = 0;
-            indexMovie = 0;
-            indexBook = 0;
         }
 
         public void AddItem(QuestionAnswers question)
         {
-            quizCollection.Add(new QuizQuestionAnswers(updateCountCategory(question),question));
+            quizCollection.Add(question);
         }
 
         public void RemoveItem(QuestionAnswers question)
         {
-            //quizCollection.Remove(second.question);
+            quizCollection.Remove(question);
         }
 
         public void Refresh(TextBox texBox)
@@ -54,10 +45,8 @@ namespace KajToBylo
 
         public void RefreshSingleItem(QuestionAnswers question)
         {
-           // int index = quizCollection.IndexOf(question);
-
-           // quizCollection.Remove(question);
-           // quizCollection.Insert(index, question);
+           int index = quizCollection.IndexOf(question);
+           quizCollection.Insert(index, question);
         }
 
         public void Clear()
@@ -67,37 +56,12 @@ namespace KajToBylo
 
         private bool questionSearch(object item)
         {
-            QuestionAnswers question = item as QuestionAnswers;
+            QuizQuestionAnswers question = item as QuizQuestionAnswers;
 
-            if (filterText == null || question.Question.Contains(filterText))
+            if (filterText == null || question.Question.Question.Contains(filterText))
                 return true;
             else
                 return false;
-        }
-
-        private int updateCountCategory(QuestionAnswers question)
-        {
-            int index = 0;
-            switch (question.CategoryIndex)
-            {
-                case MainWindow.IndexCategory.MusicPL:
-                    indexMusicPL++;
-                    index = indexMusicPL;
-                    break;
-                case MainWindow.IndexCategory.MusicSL:
-                    indexMusicSL++;
-                    index = indexMusicSL;
-                    break;
-                case MainWindow.IndexCategory.Movie:
-                    indexMovie++;
-                    index = indexMovie;
-                    break;
-                case MainWindow.IndexCategory.Book:
-                    indexBook++;
-                    index = indexBook;
-                    break;
-            }
-            return index;
         }
     }
 }

@@ -5,50 +5,24 @@ using System.Text;
 using System.Windows.Data;
 using System.Windows.Controls;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace KajToBylo
 {
     class RowNumberInGroupConverter : IMultiValueConverter
     {
-
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             int ordinal = 0;
-            ListViewItem item = values[0] as ListViewItem;
-            
+            QuestionAnswers question = values[1] as QuestionAnswers;
+            IEnumerable<object> ob = values[0] as IEnumerable<object>;
+            List<object> groupItems = new List<object>();
 
-            ListView group = values[1] as ListView;
+            foreach (var i in ob)
+                groupItems.Add(i);
 
-            ordinal = group.ItemContainerGenerator.IndexFromContainer(item)+1;
-
-            
-
-            //ordinal = groupItems.FindName(item.Name);
-
-          /*if (groupName == MainWindow.NameCategory[(int)MainWindow.IndexCategory.MusicPL])
-            {            
-                    ++indexMusicPL;
-                    ordinal = indexMusicPL;
-            }
-            else if (groupName == MainWindow.NameCategory[(int)MainWindow.IndexCategory.MusicSL])
-            {
-                ++indexMusicSL;
-                ordinal = indexMusicSL;
-            }
-            else if (groupName == MainWindow.NameCategory[(int)MainWindow.IndexCategory.Movie])
-            {
-                ++indexMovie;
-                ordinal = indexMovie;
-            }
-            else if (groupName == MainWindow.NameCategory[(int)MainWindow.IndexCategory.Book])
-            {
-                ++indexBook;
-                ordinal = indexBook;
-            }*/
-            
-
-            return ordinal;
-
+            ordinal = groupItems.IndexOf(question) + 1;
+            return ordinal.ToString();
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)

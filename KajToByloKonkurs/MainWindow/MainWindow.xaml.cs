@@ -146,6 +146,8 @@ namespace KajToBylo
             {
                 quizCollection.RemoveItem(question);
                 listQuiz.Items.Refresh();
+                question.AddedToQuizCollection = false;
+                refreshListsView(question.CategoryIndex);
             }
             else
             {
