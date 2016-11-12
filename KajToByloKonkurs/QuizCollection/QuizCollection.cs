@@ -45,8 +45,9 @@ namespace KajToBylo
 
         public void RefreshSingleItem(QuestionAnswers question)
         {
-           int index = quizCollection.IndexOf(question);
-           quizCollection.Insert(index, question);
+            int index = quizCollection.IndexOf(question);
+            quizCollection.Remove(question);
+            quizCollection.Insert(index, question);
         }
 
         public void Clear()

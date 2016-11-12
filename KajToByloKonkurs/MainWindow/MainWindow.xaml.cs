@@ -145,7 +145,6 @@ namespace KajToBylo
             if (buttonDeleteQuestion.Name == "buttonDeleteQuiz")
             {
                 quizCollection.RemoveItem(question);
-                listQuiz.Items.Refresh();
                 question.AddedToQuizCollection = false;
                 refreshListsView(question.CategoryIndex);
             }
@@ -195,7 +194,7 @@ namespace KajToBylo
                 question.Used = true;
 
             refreshListsView(question.CategoryIndex);
-           // quizCollection.RefreshSingleItem(question);
+            quizCollection.RefreshSingleItem(question);
         }
 
         /*private IndexCategory checkCategory(string button)
