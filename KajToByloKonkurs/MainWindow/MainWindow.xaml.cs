@@ -195,7 +195,7 @@ namespace KajToBylo
                 question.Used = true;
 
             refreshListsView(question.CategoryIndex);
-            quizCollection.RefreshSingleItem(question);
+           // quizCollection.RefreshSingleItem(question);
         }
 
         /*private IndexCategory checkCategory(string button)

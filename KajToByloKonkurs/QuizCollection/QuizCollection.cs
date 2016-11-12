@@ -56,9 +56,9 @@ namespace KajToBylo
 
         private bool questionSearch(object item)
         {
-            QuizQuestionAnswers question = item as QuizQuestionAnswers;
+            QuestionAnswers question = item as QuestionAnswers;
 
-            if (filterText == null || question.Question.Question.Contains(filterText))
+            if (filterText == null || question.Question.Contains(filterText))
                 return true;
             else
                 return false;
