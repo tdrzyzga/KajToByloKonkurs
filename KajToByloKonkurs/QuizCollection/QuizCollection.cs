@@ -37,7 +37,7 @@ namespace KajToBylo
             quizCollection.Remove(question);
         }
 
-        public void Refresh(TextBox texBox)
+        public void Search(TextBox texBox)
         {
             filterText = texBox.Text;
             Quiz.Refresh();
@@ -59,7 +59,13 @@ namespace KajToBylo
         {
             QuestionAnswers question = item as QuestionAnswers;
 
-            if (filterText == null || question.Question.Contains(filterText))
+            string compareText = "";
+            if (filterText != null)
+                compareText = filterText.ToUpper();
+
+            string query = question.Question.ToUpper();
+
+            if (filterText == null || query.Contains(compareText))
                 return true;
             else
                 return false;

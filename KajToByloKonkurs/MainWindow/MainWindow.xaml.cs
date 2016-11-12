@@ -242,9 +242,9 @@ namespace KajToBylo
         {
             System.Windows.Controls.TextBox filter = sender as System.Windows.Controls.TextBox;
             if (filter.Name == "filterQuiz")
-                quizCollection.Refresh(filter);
+                quizCollection.Search(filter);
             else
-                collections.Refresh(filter);
+                collections.Search(filter);
             
         }
 
