@@ -40,7 +40,8 @@ namespace KajToBylo
 
         public override string ToString()
         {
-            return Question;
+            string question ="\n" + Question + "\n" + " a) " + ResponseA + "\n" + " b) " + ResponseB + "\n" + " c) " + ResponseC + "\n" + " d) " + ResponseD;
+            return question;
         }
     }
 }

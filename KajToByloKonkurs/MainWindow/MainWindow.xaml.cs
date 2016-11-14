@@ -255,7 +255,7 @@ namespace KajToBylo
         {
             System.Windows.Forms.ListView list = new System.Windows.Forms.ListView();
 
-            foreach (var item in listQuiz.Items)
+            foreach (QuestionAnswers item in listQuiz.Items)
                 list.Items.Add(item.ToString());
            
             Spire.DataExport.PDF.PDFExport PDFExport = new Spire.DataExport.PDF.PDFExport();
