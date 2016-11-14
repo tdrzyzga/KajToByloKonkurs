@@ -37,5 +37,10 @@ namespace KajToBylo
             Used = used;
             AddedToQuizCollection = false;
         }
+
+        public override string ToString()
+        {
+            return Question;
+        }
     }
 }

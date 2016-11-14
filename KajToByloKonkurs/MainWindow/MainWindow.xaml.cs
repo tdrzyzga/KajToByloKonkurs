@@ -15,6 +15,9 @@ using System.Windows.Forms;
 using System.Collections.ObjectModel;
 using System.Data.OleDb;
 using System.IO;
+using System.Drawing;
+using System.Data;
+
 
 namespace KajToBylo
 {
@@ -250,6 +253,22 @@ namespace KajToBylo
 
         private void createPDF_Click(object sender, RoutedEventArgs e)
         {
+            System.Windows.Forms.ListView list = new System.Windows.Forms.ListView();
+
+            foreach (var item in listQuiz.Items)
+                list.Items.Add(item.ToString());
+           
+            Spire.DataExport.PDF.PDFExport PDFExport = new Spire.DataExport.PDF.PDFExport();
+            PDFExport.DataSource = Spire.DataExport.Common.ExportSource.ListView;
+            PDFExport.ListView = list;
+            PDFExport.ActionAfterExport = Spire.DataExport.Common.ActionType.OpenView;
+
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Filter = "Text file (*.pdf)|*.pdf";
+            saveFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            if (saveFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                PDFExport.SaveToFile(saveFile.FileName + ".pdf");
         }
     }
 }
