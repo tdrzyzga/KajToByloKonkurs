@@ -36,10 +36,10 @@
                     <Image x:Name="image4" Stretch="Fill" Source="/Images/legend.png" StretchDirection="Both" />
                 </Button>
                 <Button x:Name="buttonCreatePDF" ToolTip="Utwórz dokument PDF" Padding="1" VerticalAlignment="Stretch" Click="createPDF_Click" IsEnabled="False">
-                    <Image x:Name="image5" Stretch="Fill" Source="/Images/pdf.png" StretchDirection="Both" />
+                    <Image x:Name="image5" Stretch="Fill" Source="/WpfKajKUrwaKaj;component/Images/pdf.png" StretchDirection="Both" />
                 </Button>
                 <Button x:Name="buttonCreateDOCX" ToolTip="Utwórz dokument DOCX" Padding="1" VerticalAlignment="Stretch" IsEnabled="False">
-                    <Image x:Name="image6" Stretch="Fill" Source="/Images/docx.png" StretchDirection="Both" />
+                    <Image x:Name="image6" Stretch="Fill" Source="/WpfKajKUrwaKaj;component/Images/docx.png" StretchDirection="Both" />
                 </Button>
 
             </ToolBar>
@@ -161,12 +161,24 @@
                                                             <DataTrigger Binding="{Binding AddedToQuizCollection}" Value="True">
                                                                 <Setter Property="IsEnabled" Value="False"/>
                                                             </DataTrigger>
-
                                                         </Style.Triggers>
                                                     </Style>
                                                 </Button.Style>
                                             </Button>
-                                            <Button Content="Edytuj" x:Name="buttonEditMusicPL" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click"/>
+                                            <Button Content="Edytuj" x:Name="buttonEditMusicPL" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click">
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Used}" Value="True">
+                                                                <Setter Property="IsEnabled" Value="False"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding AddedToQuizCollection}" Value="True">
+                                                                <Setter Property="IsEnabled" Value="False"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
                                             <Button Content="Usuń" x:Name="buttonDeleteMusicPL" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
                                         </StackPanel>
 
@@ -296,7 +308,20 @@
                                                     </Style>
                                                 </Button.Style>
                                             </Button>
-                                            <Button Content="Edytuj" x:Name="buttonEditMusicSL" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click"/>
+                                            <Button Content="Edytuj" x:Name="buttonEditMusicSL" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click">
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Used}" Value="True">
+                                                                <Setter Property="IsEnabled" Value="False"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding AddedToQuizCollection}" Value="True">
+                                                                <Setter Property="IsEnabled" Value="False"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
                                             <Button Content="Usuń" x:Name="buttonDeleteMusicSL" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
                                         </StackPanel>
 
@@ -426,7 +451,20 @@
                                                     </Style>
                                                 </Button.Style>
                                             </Button>
-                                            <Button Content="Edytuj" x:Name="buttonEditMovie" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click"/>
+                                            <Button Content="Edytuj" x:Name="buttonEditMovie" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click">
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Used}" Value="True">
+                                                                <Setter Property="IsEnabled" Value="False"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding AddedToQuizCollection}" Value="True">
+                                                                <Setter Property="IsEnabled" Value="False"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
                                             <Button Content="Usuń" x:Name="buttonDeleteMovie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
                                         </StackPanel>
 
@@ -556,7 +594,20 @@
                                                     </Style>
                                                 </Button.Style>
                                             </Button>
-                                            <Button Content="Edytuj" x:Name="buttonEditBook" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click"/>
+                                            <Button Content="Edytuj" x:Name="buttonEditBook" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click">
+                                            <Button.Style>
+                                                <Style TargetType="Button">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Used}" Value="True">
+                                                            <Setter Property="IsEnabled" Value="False"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding AddedToQuizCollection}" Value="True">
+                                                            <Setter Property="IsEnabled" Value="False"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                            </Button>
                                             <Button Content="Usuń" x:Name="buttonDeleteBook" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonDeleteQuestion_Click"/>
                                         </StackPanel>
 
@@ -683,6 +734,17 @@
 
                                         <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" >
                                             <Button Content="Padło" x:Name="buttonUsedQuestion" ToolTip="Oznacz jako użyte" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonUsedQuestion_Click">
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Used}" Value="True">
+                                                                <Setter Property="IsEnabled" Value="False"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
+                                            <Button Content="Edytuj" x:Name="buttonEditQuiz" ToolTip="Edytuj pytanie" Margin="2" Width="50" HorizontalAlignment="Right" Click="buttonEditQuestion_Click">
                                                 <Button.Style>
                                                     <Style TargetType="Button">
                                                         <Style.Triggers>

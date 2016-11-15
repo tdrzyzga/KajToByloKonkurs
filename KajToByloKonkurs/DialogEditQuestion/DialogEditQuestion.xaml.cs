@@ -22,6 +22,7 @@ namespace KajToBylo
         public QuestionAnswers Question { get; private set; }
 
         private MainWindow.IndexCategory Category;
+        private QuestionAnswers questionBeforeEdit;
 
 
         public DialogEditQuestion(QuestionAnswers question)
@@ -29,6 +30,7 @@ namespace KajToBylo
             InitializeComponent();
 
             Category = question.CategoryIndex;
+            questionBeforeEdit = question;
 
             editQuestion.Text = question.Question;
             dialogEditQuestionAnswerA.Text = question.ResponseA.Item2;
@@ -48,7 +50,7 @@ namespace KajToBylo
         {
             DialogEditQuestionResult = true;
 
-            Question = new QuestionAnswers(Category, editQuestion.Text, (Tuple.Create((bool)dialogEditQuestionA.IsChecked, dialogEditQuestionAnswerA.Text)), (Tuple.Create((bool)dialogEditQuestionB.IsChecked, dialogEditQuestionAnswerB.Text)), (Tuple.Create((bool)dialogEditQuestionC.IsChecked, dialogEditQuestionAnswerC.Text)), (Tuple.Create((bool)dialogEditQuestionD.IsChecked, dialogEditQuestionAnswerD.Text)), DateTime.Now);
+            Question = new QuestionAnswers(Category, editQuestion.Text, (Tuple.Create((bool)dialogEditQuestionA.IsChecked, dialogEditQuestionAnswerA.Text)), (Tuple.Create((bool)dialogEditQuestionB.IsChecked, dialogEditQuestionAnswerB.Text)), (Tuple.Create((bool)dialogEditQuestionC.IsChecked, dialogEditQuestionAnswerC.Text)), (Tuple.Create((bool)dialogEditQuestionD.IsChecked, dialogEditQuestionAnswerD.Text)), questionBeforeEdit.GeneratedData, questionBeforeEdit.Used, questionBeforeEdit.AddedToQuizCollection);
          
             this.Hide();
         }
