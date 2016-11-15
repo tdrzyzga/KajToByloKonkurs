@@ -52,7 +52,7 @@ namespace KajToBylo
 
             SaveFileDialog saveDialog = new SaveFileDialog();
             saveDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            saveDialog.Filter = "Text file (*.pdf)|*.pdf";
+            saveDialog.Filter = "PDF file (*.pdf)|*.pdf";
 
             if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
