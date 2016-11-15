@@ -96,6 +96,7 @@
     <Compile Include="DialogSaveBase\DialogSaveBase.xaml.cs">
       <DependentUpon>DialogSaveBase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreatorPDF\CreatorPDF.cs" />
     <Compile Include="OrdinalConverter\OrdinalConverter.cs" />
     <Compile Include="QuestionAnswers\QuestionAnswers.cs" />
     <Compile Include="QuestionComparer\QuestionComparer.cs" />
