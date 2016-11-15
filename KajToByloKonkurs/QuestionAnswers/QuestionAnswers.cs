@@ -22,7 +22,7 @@ namespace KajToBylo
         public bool Used { get; set; }
         public bool AddedToQuizCollection { get; set; }
 
-        public QuestionAnswers(MainWindow.IndexCategory indexCategory, string question, Tuple<bool, string> answerA, Tuple<bool, string> answerB, Tuple<bool, string> answerC, Tuple<bool, string> answerD, DateTime dateTime, bool used = false)
+        public QuestionAnswers(MainWindow.IndexCategory indexCategory, string question, Tuple<bool, string> answerA, Tuple<bool, string> answerB, Tuple<bool, string> answerC, Tuple<bool, string> answerD, DateTime dateTime, bool used = false, bool addedToQuizCollection = false)
         {
             CategoryIndex = indexCategory;
             CategoryName = MainWindow.NameCategory[(int)CategoryIndex];
@@ -35,7 +35,7 @@ namespace KajToBylo
 
             GeneratedData = dateTime;
             Used = used;
-            AddedToQuizCollection = false;
+            AddedToQuizCollection = addedToQuizCollection;
         }
     }
 }

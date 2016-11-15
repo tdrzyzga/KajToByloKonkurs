@@ -43,6 +43,13 @@ namespace KajToBylo
             Quiz.Refresh();
         }
 
+        public void ChangeItem(QuestionAnswers questionBeforeChanges, QuestionAnswers questionAfterChanges)
+        {
+            int index = quizCollection.IndexOf(questionBeforeChanges);
+            quizCollection.Remove(questionBeforeChanges);
+            quizCollection.Insert(index, questionAfterChanges);
+        }
+
         public void RefreshSingleItem(QuestionAnswers question)
         {
             int index = quizCollection.IndexOf(question);

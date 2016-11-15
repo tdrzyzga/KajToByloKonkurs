@@ -161,6 +161,11 @@ namespace KajToBylo
             {
                 collections.RemoveItem(question);
                 myBase.RemoveQuestion(question);
+                if (question.AddedToQuizCollection)
+                {
+                    quizCollection.RemoveItem(question);
+                    quizCollection.Quiz.Refresh();
+                }
             }
         }
 
@@ -176,6 +181,8 @@ namespace KajToBylo
             {
                 collections.ChangeItem(question, editQuestion.Question);
                 myBase.ChangeQuestion(question, editQuestion.Question);
+                if (question.AddedToQuizCollection)
+                    quizCollection.ChangeItem(question, editQuestion.Question);
             }
 
             editQuestion.Close();
