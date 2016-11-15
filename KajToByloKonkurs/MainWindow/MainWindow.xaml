@@ -36,10 +36,10 @@
                     <Image x:Name="image4" Stretch="Fill" Source="/Images/legend.png" StretchDirection="Both" />
                 </Button>
                 <Button x:Name="buttonCreatePDF" ToolTip="Utwórz dokument PDF" Padding="1" VerticalAlignment="Stretch" Click="createPDF_Click" IsEnabled="False">
-                    <Image x:Name="image5" Stretch="Fill" Source="/Images/pdf.png" StretchDirection="Both" />
+                    <Image x:Name="image5" Stretch="Fill" Source="/WpfKajKUrwaKaj;component/Images/pdf.png" StretchDirection="Both" />
                 </Button>
                 <Button x:Name="buttonCreateDOCX" ToolTip="Utwórz dokument DOCX" Padding="1" VerticalAlignment="Stretch" IsEnabled="False">
-                    <Image x:Name="image6" Stretch="Fill" Source="/Images/docx.png" StretchDirection="Both" />
+                    <Image x:Name="image6" Stretch="Fill" Source="/WpfKajKUrwaKaj;component/Images/docx.png" StretchDirection="Both" />
                 </Button>
 
             </ToolBar>
