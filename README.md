@@ -1,4 +1,6 @@
 ﻿KajToByloKonkurs
+
+Tomasz Drzyzga
     
 1) Informacje podstawowe
     Aplikacja napisana jest w Visual Studio używając języka C# oraz frameworka WPF. Zadaniem programu jest stworzenie bazy danych pytań konkursowych. Pytania zgrupowane są w czterech kategoriach "Muzyka Polska", "Muzyka Śląska", "Film", "Książka". Pytania dla każdej kategorii zapisywane są w osobnych plikach, które zapisują się w katalogu KajToBylo/NazwaBazy. Do zapisywania danych użyto serializacji klas.
