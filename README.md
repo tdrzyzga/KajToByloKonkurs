@@ -1,6 +1,11 @@
-# KajToByloKonkurs
+﻿KajToByloKonkurs
+    
+1) Informacje podstawowe
+    Aplikacja napisana jest w Visual Studio używając języka C# oraz frameworka WPF. Zadaniem programu jest stworzenie bazy danych pytań konkursowych. Pytania zgrupowane są w czterech kategoriach "Muzyka Polska", "Muzyka Śląska", "Film", "Książka". Pytania dla każdej kategorii zapisywane są w osobnych plikach, które zapisują się w katalogu KajToBylo/NazwaBazy. Do zapisywania danych użyto serializacji klas.
+2) Funkcjonalność
+Aplikacja umożliwia:
+• tworzenie własnej bazy pytań,
+• zapis, edycja oraz usuwanie pytań w kategoriach,
+• stworzenie zastawu konkursowego,
+• eksport zestawu konkursowego do pliku PDF
 
-Aplikacjia napisana jest za pomocą C# i frameworku WPF, służy mi do nauki programowanie we wcześniej wymienionych technologiach.
-Zadaniem programu jest stworzenie bazy danych pytań do konkursu "Kaj To Było".
-
-Po utracie danych repozytorium stworzone drugi raz;/

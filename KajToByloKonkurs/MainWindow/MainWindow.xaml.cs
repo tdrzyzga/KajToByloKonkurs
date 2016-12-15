@@ -137,12 +137,10 @@ namespace KajToBylo
             buttonSaveBase.IsEnabled = true;
             buttonNewQuestion.IsEnabled = true;
             buttonCreatePDF.IsEnabled = true;
-            buttonCreateDOCX.IsEnabled = true;
 
             menuSaveBase.IsEnabled = true;
             menuAddQuestion.IsEnabled = true;
             menuCreatePDF.IsEnabled = true;
-            menuCreateDOCX.IsEnabled = true;
         }
 
         private void buttonDeleteQuestion_Click(object sender, RoutedEventArgs e)
